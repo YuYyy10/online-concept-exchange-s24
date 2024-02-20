@@ -321,9 +321,15 @@ def get_posts_by_tag(tag: str) -> list[DatabaseRow]:
     Args:
         tag: Tag of the posts.
 
+    Raises:
+        ValueError: Supplied tag was empty.
+
     Returns:
         All posts with specified tag.
     """
+    if not tag:
+        raise ValueError('Cannot query for posts based on empty tag.')
+
     con = get_db()
     cur = con.cursor()
 
