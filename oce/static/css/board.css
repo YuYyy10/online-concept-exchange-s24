@@ -1,0 +1,9 @@
+#map-and-label {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#map-label {
+  text-align: center;
+}

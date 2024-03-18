@@ -4,14 +4,14 @@ from argon2 import PasswordHasher
 from flask import Flask
 from flask_login import LoginManager
 
-login_manager = LoginManager()
-password_hasher = PasswordHasher()
+#login_manager = LoginManager()
+#password_hasher = PasswordHasher()
 
 
 def create_app():
     app = Flask(__name__)
     app.secret_key = token_urlsafe(32)  # TODO: extract into config file
-    login_manager.init_app(app)
+    # login_manager.init_app(app)
 
     from oce.accounts.routes import accounts
     from oce.content.routes import content

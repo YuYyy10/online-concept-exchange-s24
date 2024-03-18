@@ -59,5 +59,46 @@ function resizeBlockAreas() {
   });
 }
 
+function setBlockLabel(e) {
+  if (
+    e.target.tagName.toLowerCase() === "area" &&
+    e.target.parentElement.getAttribute("name") === "game-board-map"
+  ) {
+    placeholder = document.getElementById("block-label-placeholder");
+    label = document.getElementById("block-label");
+
+    // the mouse has moved into a block: set label and placeholder
+    words = e.target.getAttribute("id").split("-");
+
+    // capitalize words
+    words = words.map((word) => {
+      return word[0].toUpperCase() + word.substr(1);
+    });
+
+    // for IDs with 3 words like "block-1-environment",
+    // join the first 2 words with a space
+    words = words.length >= 3 ? [words.slice(0, 2).join(" "), words[2]] : words;
+
+    label.innerText = words.join(": ");
+    label.style.color =
+      "#" + JSON.parse(e.target.getAttribute("data-maphilight"))["strokeColor"];
+
+    document.getElementById("block-label-placeholder").innerText =
+      "Click to learn about ";
+  }
+}
+
+function resetBlockLabel(e) {
+  if (e.target.getAttribute("id") === "game-board-image") {
+    placeholder = document.getElementById("block-label-placeholder");
+    label = document.getElementById("block-label");
+
+    placeholder.innerText = "Click on a block to learn more!";
+    label.innerText = "";
+  }
+}
+
 window.addEventListener("resize", setupBlockAreas);
 document.addEventListener("DOMContentLoaded", setupBlockAreas);
+document.addEventListener("mouseover", setBlockLabel);
+document.addEventListener("mouseout", resetBlockLabel);
