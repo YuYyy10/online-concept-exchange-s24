@@ -10,6 +10,7 @@ password_hasher = PasswordHasher()
 
 def create_app():
     app = Flask(__name__)
+    app.config['DB_NAME'] = 'oce.db'  # TODO: extract into config file
     app.secret_key = token_urlsafe(32)  # TODO: extract into config file
     login_manager.init_app(app)
 
