@@ -1,9 +1,3 @@
-# Prettier plugin for Jinja
-node_modules
-package-lock.json
-package.json
-.prettierrc
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
