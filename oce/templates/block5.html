@@ -8,7 +8,7 @@
             <span class="ability-color">Block #5: Developed Abilities</span>
           </h1>
           <img
-            src="../static/images/block5header.png"
+            src="{{ url_for('static', filename='images/block5header.png') }}"
             class="img-fluid"
             alt="The Human Domino Effect board with developed abilities"
           />
@@ -47,7 +47,7 @@
 	    <span class = "ability-color"> Useful Abilities </span>
 	  </p>
           <img
-            src="../static/images/block5scale.png"
+            src= "{{ url_for('static', filename='images/block5scale.png') }}"
             class="img-fluid"
             alt="A scale showing how Vitalium Ability is mixed Cobalt Goodness and Chromium Skills"
           />
