@@ -1,18 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Block #2 - Energy for Learning</title>
-    <link rel="stylesheet" href="../static/css/block2.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  </head>
+{% extends 'base.html' %}
 
-  <body>
+{% block content %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/block2.css') }}" />
+
     <div class="container text-left">
       <div class="row align-items-start">
         <div class="col">
@@ -20,7 +10,7 @@
             <span class="energy-color">Block #2: Antimonial-Lead Energy</span>
           </h1>
           <img
-            src="../static/images/block2header.png"
+            src="{{ url_for('static', filename='images/block2header.png') }}"
             class="img-fluid"
             alt="The Human Domino Effect board with the Antimonial-Lead Energy Block"
           />
@@ -81,12 +71,11 @@
             for learning and living together.
           </p>
           <img
-            src="../static/images/block2scale.png"
+            src="{{ url_for('static', filename='images/block2scale.png') }}"
             class="img-fluid"
             alt="A scale showing how Antimonial-Lead Energy is a mix of Antimony Joy and Lead Focus"
           />
         </div>
       </div>
     </div>
-  </body>
-</html>
+{% endblock %}
