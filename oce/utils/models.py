@@ -30,14 +30,13 @@ class User(UserMixin):
 
 
 @login_manager.user_loader
-def _user_loader(uuid: str) -> User | None:
+def user_loader(uuid: str) -> User | None:
     from ..utils.db_interface import get_user_by_uuid
 
     if user_data := get_user_by_uuid(uuid):
         user = User(**user_data)
         return user
     return None
-
 
 def validate_user_login(email: str, password: str) -> tuple[bool, str]:
     """Validate a login attempt given a email and password.
