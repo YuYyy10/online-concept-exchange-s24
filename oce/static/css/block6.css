@@ -1,0 +1,15 @@
+.kindness-color{
+	color: #7F7F7F;
+	font-weight: bold;
+}
+
+.responsibility-color{
+	color: #9A9A9A;
+	font-weight: bold;
+}
+
+.understanding-color{
+	color: #EBEBEB;
+	font-weight: bold;
+	-webkit-text-stroke: 1px #414141;
+}
