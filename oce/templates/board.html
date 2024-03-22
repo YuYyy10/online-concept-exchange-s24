@@ -17,7 +17,7 @@
   defer
 ></script>
 
-<div id="map-and-label">
+<div id="map-and-label" class="dflex flex-column align-items-center">
   <div id="map-wrapper" class="w-100 h-100">
     <div class="map">
       <img
@@ -29,7 +29,7 @@
       />
     </div>
   </div>
-  <h3 id="map-label">
+  <h3 id="map-label" class="text-center">
     <span id="block-label-placeholder">Click on a block to learn more!</span
     ><span id="block-label"></span>
   </h3>
@@ -40,7 +40,7 @@
     id="block-1-environment"
     shape="poly"
     coords="169,257,169,234,189,250,213,242,217,230,220,256,215,272,192,283"
-    href="https://www.uky.edu"
+    href="{{ url_for('content.block1') }}"
     alt=""
     data-maphilight='{"strokeColor":"77722a","fillColor":"534e3e"}'
   />
