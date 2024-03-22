@@ -2,3 +2,27 @@
   padding-left: 10%;
   padding-right: 10%;
 }
+
+.stone-0 {
+  background-color: #fffdc8;
+}
+
+.stone-1 {
+  background-color: #b5c7a4;
+}
+
+.stone-2 {
+  background-color: #b6cfeb;
+}
+
+.stone-3 {
+  background-color: #c18daa;
+}
+
+.stone-4 {
+  background-color: #f6a99d;
+}
+
+.stone-5 {
+  background-color: #fadc9a;
+}
