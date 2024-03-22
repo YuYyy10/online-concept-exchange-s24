@@ -1,16 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <link href="{{ url_for('static', filename='css/block9.css') }}" />
+  <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/block9.css') }}"
+  />
 
   <div class="container text-left">
     <div class="row align-items-start">
       <div class="col">
         <h1>
-            <span class="perception-color">Block #9: Functional Relationships</span>
+          <span class="perception-color"
+            >Block #9: Functional Relationships</span
+          >
         </h1>
         <img
-          src="{{ url_for('static', filename='css/block9header.css') }}"
+          src="{{ url_for('static', filename='images/block9header.png') }}"
           class="img-fluid"
           alt="The Human Domino Effect board with the Silver-Gold Block"
         />
@@ -63,7 +68,10 @@
         </p>
 
         <p>Building Considerate Interactions</p>
-        <img src="{{ url_for('static', filename='css/block9scale.css') }}" />
+        <img
+          class="img-fluid"
+          src="{{ url_for('static', filename='images/block9scale.png') }}"
+        />
       </div>
     </div>
   </div>

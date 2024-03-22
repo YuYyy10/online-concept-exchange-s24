@@ -1,194 +1,196 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <link href="{{ url_for('static', filename='css/index.css') }}" />
-    <div class="container-fluid">
-      <div class="row align-items-center mb-5 py-10">
-        <div class="col-12 col-md-6">
-          <div
-            class="text-center text-md-start d-flex flex-column align-items-center d-md-block"
-          >
-            <h1>The Human Domino Effect</h1>
-            <p class="w-75">
-              A mental framework of community that helps students better
-              understand that they are valuable members of the human family
+  <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/index.css') }}"
+  />
+  <div class="container-fluid">
+    <div class="row align-items-center mb-5 py-10">
+      <div class="col-12 col-md-6">
+        <div
+          class="text-center text-md-start d-flex flex-column align-items-center d-md-block"
+        >
+          <h1>The Human Domino Effect</h1>
+          <p class="w-75">
+            A mental framework of community that helps students better
+            understand that they are valuable members of the human family
+          </p>
+        </div>
+      </div>
+      <div class="col-12 col-md-6">
+        <div>{% include "board.html" %}</div>
+      </div>
+    </div>
+
+    <div
+      class="row align-items-center text-center bg-primary text-white mb-5 my-0"
+    >
+      <div class="col py-3">
+        <h2>Our Story</h2>
+      </div>
+    </div>
+
+    <div class="row align-items-start mb-5 py-10">
+      <div class="col-12 col-md-4 mb-4">
+        <div class="card">
+          <img
+            src="{{ url_for('static', filename='images/humanfamily.png') }}"
+            class="card-img-top border-bottom border-4 border-primary"
+            alt="A sketch of figures showing the human family"
+          />
+          <div class="card-body">
+            <p>
+              There was a time when children and teens could see and experience
+              friends and neighbors working together to make our communities a
+              better place for everyone to live.
+            </p>
+
+            <p>
+              While it is true that there were the barriers of prejudice,
+              oppression, and inequality in our collective history, there were
+              also more chances than today for children to see people working
+              together in their village.
             </p>
           </div>
         </div>
-        <div class="col-12 col-md-6">
-          <div>{% include "board.html" %}</div>
-        </div>
       </div>
 
-      <div
-        class="row align-items-center text-center bg-primary text-white mb-5 my-0"
-      >
-        <div class="col py-3">
-          <h2>Our Story</h2>
-        </div>
-      </div>
-
-      <div class="row align-items-start mb-5 py-10">
-        <div class="col-12 col-md-4 mb-4">
-          <div class="card">
-            <img
-              src="{{ url_for('static', filename='images/humanfamily.png') }}"
-              class="card-img-top border-bottom border-4 border-primary"
-              alt="A sketch of figures showing the human family"
-            />
-            <div class="card-body">
-              <p>
-                There was a time when children and teens could see and
-                experience friends and neighbors working together to make our
-                communities a better place for everyone to live.
-              </p>
-
-              <p>
-                While it is true that there were the barriers of prejudice,
-                oppression, and inequality in our collective history, there were
-                also more chances than today for children to see people working
-                together in their village.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-12 col-md-4 mb-4">
-          <div class="card">
-            <img
-              src="{{ url_for('static', filename='images/homebuilding.png') }}"
-              class="card-img-top border-bottom border-4 border-primary"
-              alt="A sketch of stick figures building the frame of a house"
-            />
-            <div class="card-body">
-              <p>
-                Children could see people building houses with each other,
-                growing and harvesting food with one other, and chipping in to
-                help when there was crisis and illness.
-              </p>
-
-              <p>
-                Community cohesion is not as visible for our youth today, with
-                more of our time spent in separate homes, vehicles, delivery
-                services, and the need to socially distance due to Covid-19.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-12 col-md-4 mb-4">
-          <div class="card">
-            <img
-              src="{{ url_for('static', filename='images/threecircles.png') }}"
-              class="card-img-top border-bottom border-4 border-primary"
-              alt="A three circle Venn diagram showing liberty, happiness, and healthy"
-            />
-            <div class="card-body">
-              <p>
-                The Human Domino Effect is a project that involves community
-                partners, schools, and families as they work together to build
-                an online game that reveals what community is and how a
-                well-functioning community can solve big problems.
-              </p>
-              <p>
-                The game provides a fun opportunity for students to stack up a
-                model with fun building blocks to demonstrate how we are each
-                needed in the process of creating well-functioning homes,
-                schools, and workplaces that combine to make great communities.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div
-        class="row align-items-center text-center bg-info text-white mb-5 my-0"
-      >
-        <div class="col py-3">
-          <h2>The Game</h2>
-        </div>
-      </div>
-
-      <div
-        class="row align-items-center text-center bg-warning text-white mb-5 my-0"
-      >
-        <div class="col py-3">
-          <h2>Rounds</h2>
-        </div>
-      </div>
-
-      <div class="row align-items-center mb-5 py-10">
-        <div class="col-12 col-md-6 mb-4">
-          <div class="accordion" id="rounds-accordian">
-            {%
-              for round in [
-              ('Zero', [
-              ('Scientists believe Earth was formed', '4.6 billion ya'),
-              ('Dinosaurs roam our Earth', '248-65 million ya'),
-              ('First stone tools, all humans live in Africa', '2.5 million ya'),
-              ('Neanderthals and Denisovians walk to Europe and Asia', '600,000 ya'),
-              ('Ancient humans make spears and use fire', '500,000 ya'),
-              ('Homo Sapiens, our species, emerges and grows to about 30,000 people', '200,000 ya'),
-              ('Our genetic mother in East Africa gave her DNA to all of us', '160,000 ya'),
-              ('We built the stone circles when all us Sapines lived in Africa and were the same color', '100,000 ya'),
-              ('Some of us Sapiens walk north out of Africa and we make our first beads', '74,000 ya'),
-              ('Sapiens who went North meet up with Neanderthals and Denisovians', '50,000 ya')
-              ])
-
-              ]
-            %}
-              <div class="accordion-item">
-                <h2 class="accordion-header">
-                  <button
-                    class="accordion-button"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="{{ '#collapse' ~ round[0] }}"
-                    aria-expanded="true"
-                    aria-controls="{{ 'collapse' ~ round[0] }}"
-                  >
-                    {{ 'Round ' ~ round[0] }}
-                  </button>
-                </h2>
-                <div
-                  id="{{ 'collapse' ~ round[0] }}"
-                  class="accordion-collapse collapse show"
-                  data-bs-parent="#rounds-acordian"
-                >
-                  <div class="accordion-body">
-                    <ul class="list-group">
-                      {% for pair in round[1] %}
-                        <li
-                          class="list-group-item d-flex justify-content-between align-items-center flex-wrap flex-md-nowrap"
-                        >
-                          {{ pair[0] }}
-                          <span class="badge text-bg-primary rounded-pill"
-                            >{{ pair[1] }}</span
-                          >
-                        </li>
-                      {% endfor %}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            {% endfor %}
-          </div>
-        </div>
-        <div class="col-12 col-md-6 mb-4">
+      <div class="col-12 col-md-4 mb-4">
+        <div class="card">
           <img
-            src="{{ url_for('static', filename='images/rounds.png') }}"
-            class="img-fluid"
-            alt="The Human Domino Effect game board with arrows and text describing the rounds of the game"
+            src="{{ url_for('static', filename='images/homebuilding.png') }}"
+            class="card-img-top border-bottom border-4 border-primary"
+            alt="A sketch of stick figures building the frame of a house"
           />
+          <div class="card-body">
+            <p>
+              Children could see people building houses with each other, growing
+              and harvesting food with one other, and chipping in to help when
+              there was crisis and illness.
+            </p>
+
+            <p>
+              Community cohesion is not as visible for our youth today, with
+              more of our time spent in separate homes, vehicles, delivery
+              services, and the need to socially distance due to Covid-19.
+            </p>
+          </div>
         </div>
       </div>
-      <div
-        class="row align-items-center text-center bg-danger text-white mb-5 my-0"
-      >
-        <div class="col py-3">
-          <h2>Gallery</h2>
+
+      <div class="col-12 col-md-4 mb-4">
+        <div class="card">
+          <img
+            src="{{ url_for('static', filename='images/threecircles.png') }}"
+            class="card-img-top border-bottom border-4 border-primary"
+            alt="A three circle Venn diagram showing liberty, happiness, and healthy"
+          />
+          <div class="card-body">
+            <p>
+              The Human Domino Effect is a project that involves community
+              partners, schools, and families as they work together to build an
+              online game that reveals what community is and how a
+              well-functioning community can solve big problems.
+            </p>
+            <p>
+              The game provides a fun opportunity for students to stack up a
+              model with fun building blocks to demonstrate how we are each
+              needed in the process of creating well-functioning homes, schools,
+              and workplaces that combine to make great communities.
+            </p>
+          </div>
         </div>
       </div>
     </div>
-    
+
+    <div
+      class="row align-items-center text-center bg-info text-white mb-5 my-0"
+    >
+      <div class="col py-3">
+        <h2>The Game</h2>
+      </div>
+    </div>
+
+    <div
+      class="row align-items-center text-center bg-warning text-white mb-5 my-0"
+    >
+      <div class="col py-3">
+        <h2>Rounds</h2>
+      </div>
+    </div>
+
+    <div class="row align-items-center mb-5 py-10">
+      <div class="col-12 col-md-6 mb-4">
+        <div class="accordion" id="rounds-accordian">
+          {%
+            for round in [
+            ('Zero', [
+            ('Scientists believe Earth was formed', '4.6 billion ya'),
+            ('Dinosaurs roam our Earth', '248-65 million ya'),
+            ('First stone tools, all humans live in Africa', '2.5 million ya'),
+            ('Neanderthals and Denisovians walk to Europe and Asia', '600,000 ya'),
+            ('Ancient humans make spears and use fire', '500,000 ya'),
+            ('Homo Sapiens, our species, emerges and grows to about 30,000 people', '200,000 ya'),
+            ('Our genetic mother in East Africa gave her DNA to all of us', '160,000 ya'),
+            ('We built the stone circles when all us Sapines lived in Africa and were the same color', '100,000 ya'),
+            ('Some of us Sapiens walk north out of Africa and we make our first beads', '74,000 ya'),
+            ('Sapiens who went North meet up with Neanderthals and Denisovians', '50,000 ya')
+            ])
+
+            ]
+          %}
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="{{ '#collapse' ~ round[0] }}"
+                  aria-expanded="true"
+                  aria-controls="{{ 'collapse' ~ round[0] }}"
+                >
+                  {{ 'Round ' ~ round[0] }}
+                </button>
+              </h2>
+              <div
+                id="{{ 'collapse' ~ round[0] }}"
+                class="accordion-collapse collapse show"
+                data-bs-parent="#rounds-acordian"
+              >
+                <div class="accordion-body">
+                  <ul class="list-group">
+                    {% for pair in round[1] %}
+                      <li
+                        class="list-group-item d-flex justify-content-between align-items-center flex-wrap flex-md-nowrap"
+                      >
+                        {{ pair[0] }}
+                        <span class="badge text-bg-primary rounded-pill"
+                          >{{ pair[1] }}</span
+                        >
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="col-12 col-md-6 mb-4">
+        <img
+          src="{{ url_for('static', filename='images/rounds.png') }}"
+          class="img-fluid"
+          alt="The Human Domino Effect game board with arrows and text describing the rounds of the game"
+        />
+      </div>
+    </div>
+    <div
+      class="row align-items-center text-center bg-danger text-white mb-5 my-0"
+    >
+      <div class="col py-3">
+        <h2>Gallery</h2>
+      </div>
+    </div>
+  </div>
 {% endblock %}
