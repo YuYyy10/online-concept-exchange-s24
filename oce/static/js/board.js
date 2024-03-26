@@ -64,37 +64,44 @@ function setBlockLabel(e) {
     e.target.tagName.toLowerCase() === "area" &&
     e.target.parentElement.getAttribute("name") === "game-board-map"
   ) {
-    placeholder = document.getElementById("block-label-placeholder");
-    label = document.getElementById("block-label");
+    const NAME = document.getElementById("block-name");
+    const NAMEPLACEHOLDER = document.getElementById("block-name-placeholder");
+    const DESC = document.getElementById("block-desc");
+    const DESCPLACEHOLDER = document.getElementById("block-desc-placeholder");
 
-    // the mouse has moved into a block: set label and placeholder
-    words = e.target.getAttribute("id").split("-");
+    let blockDesc = e.target.getAttribute("alt");
+    let blockName = e.target.getAttribute("id").split("-");
 
-    // capitalize words
-    words = words.map((word) => {
+    // capitalize blockName words
+    blockName = blockName.map((word) => {
       return word[0].toUpperCase() + word.substr(1);
     });
 
-    // for IDs with 3 words like "block-1-environment",
-    // join the first 2 words with a space
-    words = words.length >= 3 ? [words.slice(0, 2).join(" "), words[2]] : words;
-
-    label.innerText = words.join(": ");
-    label.style.color =
+    let blockColor =
       "#" + JSON.parse(e.target.getAttribute("data-maphilight"))["strokeColor"];
 
-    document.getElementById("block-label-placeholder").innerText =
-      "Click to learn about ";
+    NAME.innerText = blockName.join(" ");
+    NAME.style.color = blockColor;
+    NAMEPLACEHOLDER.innerText = " in ";
+
+    DESC.innerText = blockDesc;
+    DESC.style.color = blockColor;
+    DESCPLACEHOLDER.innerText = "";
   }
 }
 
 function resetBlockLabel(e) {
   if (e.target.getAttribute("id") === "game-board-image") {
-    placeholder = document.getElementById("block-label-placeholder");
-    label = document.getElementById("block-label");
+    const NAME = document.getElementById("block-name");
+    const NAMEPLACEHOLDER = document.getElementById("block-name-placeholder");
+    const DESC = document.getElementById("block-desc");
+    const DESCPLACEHOLDER = document.getElementById("block-desc-placeholder");
 
-    placeholder.innerText = "Click on a block to learn more!";
-    label.innerText = "";
+    NAME.innerText = "";
+    NAMEPLACEHOLDER.innerText = ". . .";
+
+    DESC.innerText = "";
+    DESCPLACEHOLDER.innerText = "Click on a block to learn more!";
   }
 }
 

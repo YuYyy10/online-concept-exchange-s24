@@ -3,6 +3,28 @@
   padding-right: 10%;
 }
 
+.my-10 {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+
+.py-2-5 {
+  padding-left: 2.5%;
+  padding-right: 2.5%;
+}
+
+h1,
+h2,
+#character-prompt,
+#block-name,
+#block-desc {
+  font-family: "Londrina Solid";
+}
+
+#board-description {
+  width: 80%;
+}
+
 .stone-0 {
   background-color: #fffdc8;
 }

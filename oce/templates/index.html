@@ -6,8 +6,8 @@
     href="{{ url_for('static', filename='css/index.css') }}"
   />
   <div class="container-fluid">
-    <div class="row align-items-center mb-5 py-10">
-      <div class="col-12 col-md-6">
+    <div class="row align-items-center my-10 py-2-5">
+      <div class="col-12 col-md-4">
         <div
           class="text-center text-md-start d-flex flex-column align-items-center d-md-block"
         >
@@ -18,8 +18,33 @@
           </p>
         </div>
       </div>
-      <div class="col-12 col-md-6">
+      <div class="col-12 col-md-4">
         <div>{% include "board.html" %}</div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div
+          id="map-label"
+          class="d-flex flex-column align-items-center text-center"
+        >
+          <img
+            src="{{ url_for('static', filename='images/hezekiah.png') }}"
+            class="img-fluid w-50"
+            alt="A drawing of Hezekiah"
+          />
+          <div id="board-description">
+            <h5 id="character-prompt" class="d-inline">Hezekiah</h5>
+            <span class="d-inline">invites you to learn more about </span>
+            <h5 class="d-inline" id="block-desc"></h5>
+            <span id="block-name-placeholder" class="d-inline">. . .</span>
+            <h5 id="block-name" class="d-inline"></h5>
+          </div>
+          <br />
+          <div>
+            <span id="block-desc-placeholder"
+              >Click on a block to learn more!</span
+            >
+          </div>
+        </div>
       </div>
     </div>
 
