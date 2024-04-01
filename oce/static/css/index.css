@@ -17,7 +17,8 @@ h1,
 h2,
 #character-prompt,
 #block-name,
-#block-desc {
+#block-desc,
+.card-title {
   font-family: "Londrina Solid";
 }
 
