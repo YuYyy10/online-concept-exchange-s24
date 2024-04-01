@@ -98,7 +98,7 @@ function resetBlockLabel(e) {
     const DESCPLACEHOLDER = document.getElementById("block-desc-placeholder");
 
     NAME.innerText = "";
-    NAMEPLACEHOLDER.innerText = ". . .";
+    NAMEPLACEHOLDER.innerText = "...";
 
     DESC.innerText = "";
     DESCPLACEHOLDER.innerText = "Click on a block to learn more!";
