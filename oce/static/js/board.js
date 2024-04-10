@@ -1,11 +1,33 @@
-/*
-500 pixels was the original image size when the block
-areas were defined.
+/**
+ * This file updates the board and the character dialogue on the home page.
+ *
+ * It ensures the clickable block areas are the right size by resizing them
+ * when the img element detects a size change, so the parent container does
+ * not need to be restricted to a certain size.
+ *
+ * It also changes the character's name and image, as well as the block name
+ * and description, in the character dialogue to the right of the interactive
+ * board. It grabs the character name, character image, block name, and
+ * block description from the board.html attributes, which are unique
+ * to each block.
+ */
 
-The original area coords are stored here because if only the
-most recent area coords are rescaled repeatedly, rounding
-error will accumulate and deform the areas.
-*/
+const BLOCK_NAME = document.getElementById("block-name");
+const BLOCK_NUMBER = document.getElementById("block-number");
+const BLOCK_PLACEHOLDER = document.getElementById("block-placeholder");
+
+const CHARACTER_NAME = document.getElementById("character-name");
+const CHARACTER_IMG = document.getElementById("character-img");
+const CHARACTER_PLURAL_S = document.getElementById("character-plural-s");
+
+/**
+ * 500 pixels was the original image size when the block
+ * areas were defined.
+ *
+ * The original area coords are stored here because if only the
+ * most recent area coords are rescaled repeatedly, rounding
+ * error will accumulate and deform the areas.
+ */
 const ORIGINALWIDTH = 500;
 const ORIGINALCOORDS = (() => {
   let temp = {};
@@ -64,11 +86,6 @@ function setBlockLabel(e) {
     e.target.tagName.toLowerCase() === "area" &&
     e.target.parentElement.getAttribute("name") === "game-board-map"
   ) {
-    const NAME = document.getElementById("block-name");
-    const NAMEPLACEHOLDER = document.getElementById("block-name-placeholder");
-    const DESC = document.getElementById("block-desc");
-    const DESCPLACEHOLDER = document.getElementById("block-desc-placeholder");
-
     let blockDesc = e.target.getAttribute("alt");
     let blockName = e.target.getAttribute("id").split("-");
 
@@ -80,28 +97,34 @@ function setBlockLabel(e) {
     let blockColor =
       "#" + JSON.parse(e.target.getAttribute("data-maphilight"))["strokeColor"];
 
-    NAME.innerText = blockName.join(" ");
-    NAME.style.color = blockColor;
-    NAMEPLACEHOLDER.innerText = " in ";
+    BLOCK_NUMBER.innerText = blockName.join(" ");
+    BLOCK_NUMBER.style.color = blockColor;
+    BLOCK_PLACEHOLDER.innerText = " in ";
 
-    DESC.innerText = blockDesc;
-    DESC.style.color = blockColor;
-    DESCPLACEHOLDER.innerText = "";
+    BLOCK_NAME.innerText = blockDesc;
+    BLOCK_NAME.style.color = blockColor;
+
+    let names = e.target.getAttribute("data-character-name");
+
+    CHARACTER_NAME.innerText = names;
+    CHARACTER_PLURAL_S.innerText = names.split(" ").length > 1 ? "" : "s";
+    CHARACTER_IMG.setAttribute(
+      "src",
+      e.target.getAttribute("data-character-img-url"),
+    );
   }
 }
 
 function resetBlockLabel(e) {
   if (e.target.getAttribute("id") === "game-board-image") {
-    const NAME = document.getElementById("block-name");
-    const NAMEPLACEHOLDER = document.getElementById("block-name-placeholder");
-    const DESC = document.getElementById("block-desc");
-    const DESCPLACEHOLDER = document.getElementById("block-desc-placeholder");
+    BLOCK_NUMBER.innerText = "";
+    BLOCK_PLACEHOLDER.innerText = " each block by clicking one on the board!";
 
-    NAME.innerText = "";
-    NAMEPLACEHOLDER.innerText = "...";
+    BLOCK_NAME.innerText = "";
 
-    DESC.innerText = "";
-    DESCPLACEHOLDER.innerText = "Click on a block to learn more!";
+    CHARACTER_NAME.innerText = "Hezekiah";
+    CHARACTER_PLURAL_S.innerText = "s";
+    CHARACTER_IMG.setAttribute("src", "/static/images/hezekiah.png");
   }
 }
 

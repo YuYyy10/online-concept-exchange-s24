@@ -1,14 +1,27 @@
+<!-- include the navbar and footer -->
 {% extends 'base.html' %}
+<!-- this is the content block that corresponds to base.html -->
 {% block content %}
 <link
   rel="stylesheet"
   href="{{ url_for('static', filename='css/index.css') }}"
 />
+<!-- 
+  The home page is defined as a Bootstrap grid
+  (https://getbootstrap.com/docs/5.3/layout/grid/)
+
+  This link can explain many of the Bootstrap CSS
+  classes on each element, such as row and col-*
+-->
 <div class="container-fluid">
   <div class="row align-items-center my-10 py-2-5">
     <div class="col-12 col-md-12 col-lg-4">
+      <!-- 
+        At smaller resolutions, display the title with text centered
+        At larger resolutions, display it with text justified left (aka "start")
+      -->
       <div
-        class="text-center text-lg-start d-flex flex-column align-items-center d-lg-block ps-lg-4"
+        class="text-center align-items-center d-flex flex-column text-lg-start d-lg-block ps-lg-4"
       >
         <h1>The Human Domino Effect</h1>
         <p class="w-75">
@@ -18,6 +31,7 @@
       </div>
     </div>
     <div class="col-12 col-md-6 col-lg-4">
+      <!-- include the iteractive game board in center of home page -->
       <div>{% include "board.html" %}</div>
     </div>
     <div class="col-12 col-md-6 col-lg-4">
@@ -27,21 +41,21 @@
       >
         <img
           src="{{ url_for('static', filename='images/hezekiah.png') }}"
+          id="character-img"
           class="img-fluid w-50"
-          alt="A drawing of Hezekiah"
+          alt="A drawing of a character inviting you to learn about each block!"
         />
-        <div id="board-description">
-          <h5 id="character-prompt" class="d-inline">Hezekiah</h5>
-          <span class="d-inline">invites you to learn more about </span>
-          <h5 class="d-inline" id="block-desc"></h5>
-          <span id="block-name-placeholder" class="d-inline">...</span>
+        <div id="board-description-wrapper">
+          <h5 id="character-name" class="d-inline">Hezekiah</h5>
+          <span class="d-inline"
+            >invite<span id="character-plural-s">s</span> you to learn more
+            about
+          </span>
           <h5 id="block-name" class="d-inline"></h5>
-        </div>
-        <br />
-        <div>
-          <span id="block-desc-placeholder"
-            >Click on a block to learn more!</span
+          <span id="block-placeholder" class="d-inline">
+            each block by clicking one on the board!</span
           >
+          <h5 id="block-number" class="d-inline"></h5>
         </div>
       </div>
     </div>
@@ -154,13 +168,13 @@
     </div>
   </div>
 
-  <div class="row justify-content-center text-center mb-5 py-10">
+  <div class="row justify-content-center text-start mb-5 py-10">
     <div class="col-12 col-lg-4 mb-4">
       <div class="row">
         <div class="col-12">
           <div class="card m-2">
             <div class="card-body">
-              <h5 class="card-title">Level One</h5>
+              <h5 class="card-title text-center">Level One</h5>
               <p class="card-text">
                 <!-- FIXME others -->
                 Develop awareness and mutual respect for our own and others'
@@ -174,7 +188,7 @@
         <div class="col-12">
           <div class="card m-2">
             <div class="card-body">
-              <h5 class="card-title">Level Two through Four</h5>
+              <h5 class="card-title text-center">Level Two through Four</h5>
               <p class="card-text">
                 We have quite a human story to tell, and there is a sense of
                 momentum that can be detected in our collective story ... a
@@ -202,7 +216,7 @@
         <div class="col-12">
           <div class="card m-2">
             <div class="card-body">
-              <h5 class="card-title">Levels Five and Six</h5>
+              <h5 class="card-title text-center">Levels Five and Six</h5>
               <p class="card-text">
                 We have learned over thousands of generations about the
                 <strong>basic building blocks</strong> that help us live
@@ -214,10 +228,10 @@
             </div>
           </div>
 
-          <div class="col-12">
+          <div class="col-12 order-4">
             <div class="card m-2">
               <div class="card-body">
-                <h5 class="card-title">Level Seven</h5>
+                <h5 class="card-title text-center">Level Seven</h5>
                 <p class="card-text">
                   Our human story belongs to all of us. Estimates are that 117
                   billion people have lived on the earth to date, each
@@ -243,6 +257,13 @@
     </div>
   </div>
 
+  <!-- 
+  Accordians in Bootstrap require dense HTML and CSS for each
+  element, so a for-loop is used here to loop over each round
+  
+  Note: the class names and ID's are sensitive, if changed
+  they should all be changed to be uniform
+-->
   <div class="row align-items-center mb-5 py-10">
     <div class="col-12 col-lg-6 mb-4 order-1 order-lg-0">
       <div class="accordion" id="rounds-accordian">
@@ -328,6 +349,8 @@
 
           ]
           %}
+
+          <!-- to access the outer loop index in the inner loop, we need to rename it-->
           {% set outerloop = loop %}
           <div class="accordion-item">
           <h2 class="accordion-header">
@@ -361,6 +384,10 @@
           2. the (outer) loop index, which maintains the count when the round increments (10 stones in each round)
           3. the number of colors available (6 colors that loop, see index.css)
 
+          Example: the 3rd stone in Round 2 is (3 - 1) + (2 * 10)) % 6 = 22 % 6 = stone-4
+          move index to 0 ^
+
+          (in the game, the first round is Round 0, not Round 1)
           -->
           <span
           class="badge {{ 'stone-' ~ (((loop.index - 1) + (10 * (outerloop.index - 1))) % 6) }} rounded-pill text-black"
@@ -375,21 +402,15 @@
           {% endfor %}
           </div>
           </div>
-          <div class="col-12 col-lg-6 mb-4 order-0 order-lg-1">
+          <div class="col-12 col-lg-6 mb-4 order-0 order-lg-1 d-flex flex-column align-items-center">
           <img
           src="{{ url_for('static', filename='images/rounds.png') }}"
           class="img-fluid"
           alt="The Human Domino Effect game board with arrows and text describing the rounds of the game"
           />
+          <h5 id="tiles-link"><a href="{{ url_for('content.tiles') }}" target="_blank">Click to see the full diagram with video links!</a></h5>
           </div>
           </div>
-          <!-- <div
-          class="row align-items-center text-center bg-danger text-white mb-5 my-0"
-          >
-          <div class="col py-3">
-          <h2>Gallery</h2>
-          </div>
-          </div> -->
           </div>
           {% endblock
         %}
