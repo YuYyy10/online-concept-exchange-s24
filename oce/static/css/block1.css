@@ -14,7 +14,10 @@
 }
 
 .custom-img{
+	width: 500px;
+	height: 500px;
 	float: right;
 	margin-left 15px;
 }
+
 
