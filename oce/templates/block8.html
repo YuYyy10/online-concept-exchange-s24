@@ -5,17 +5,21 @@
     rel="stylesheet"
     href="{{ url_for('static', filename='css/block8.css') }}"
   />
-
   <div class="container text-left">
-    <div class="row align-items-start justify-content-center">
-      <div class="col-10">
-        <h1>
-          <span class="resilience-color">Block #8: Resilience</span>
-        </h1>
+    <div class="row align-items-start">
+      <h1>
+        <span class="resilience-color">Block #8: Resilience</span>
+      </h1>
+      <img
+        src="{{ url_for('static', filename='images/block8header.png') }}"
+        class="img-fluid"
+        alt="The Human Domino Effect board with the resilience Block"
+      />
+      <div class="col">
         <img
-          src="{{ url_for('static', filename='images/block8header.png') }}"
-          class="img-fluid"
-          alt="The Human Domino Effect board with the resilience Block"
+          src="{{ url_for('static', filename = 'images/block8people.png') }}"
+          class="custom-img"
+          alt="Niluy and Ihcia ambassadors for magnalum self-control and aluminum purpose"
         />
         <p>
           Together <span class="selfcontrol-color">Self-Control</span> and
@@ -71,12 +75,12 @@
           <span class="purpose-color"> Purpose </span> smelt together to make
           <span class="resilience-color"> Reseilience </span>
         </p>
-        <img
-          src="{{ url_for('static', filename='images/block8scale.png') }}"
-          class="img-fluid"
-          alt="A scale showing how Magnalium Resilience is a mix of Magnesium Self-control and Aluminum Purpose"
-        />
       </div>
+      <img
+        src="{{ url_for('static', filename='images/block8scale.png') }}"
+        class="img-fluid"
+        alt="A scale showing how Magnalium Resilience is a mix of Magnesium Self-control and Aluminum Purpose"
+      />
     </div>
   </div>
 {% endblock %}

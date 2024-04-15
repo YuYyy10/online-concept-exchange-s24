@@ -5,20 +5,26 @@
     rel="stylesheet"
     href="{{ url_for('static', filename='css/block5.css') }}"
   />
-  <div class="container">
-    <div class="row align-items-start justify-content-center">
-      <div class="col-10">
-        <h1>
-          <span class="ability-color">Block #5: Developed Abilities</span>
-        </h1>
+  <div class="containter text-left">
+    <div class="row align-items-start">
+      <h1>
+        <span class="ability-color">Block #5: Developed Abilities</span>
+      </h1>
+      <img
+        src="{{ url_for('static', filename='images/block5header.png') }}"
+        class="img-fluid"
+        alt="The Human Domino Effect board with developed abilities"
+      />
+      <div class="col">
         <img
-          src="{{ url_for('static', filename='images/block5header.png') }}"
-          class="img-fluid"
-          alt="The Human Domino Effect board with developed abilities"
+          src="{{ url_for('static', filename = 'images/block5people.png') }}"
+          class="custom-img"
+          alt="Aetaupatupat and Ukanawit Aduid ambassadors for cobalt goodness and chromium skills"
         />
+
         <p>
           Together they make for the
-          <span class="ability-color">Vitalium kind of Ability!</span>!
+          <span class="ability-color"> Vitalium kind of Ability!</span>!
         </p>
         <p>
           The definition of
@@ -35,8 +41,8 @@
           allow children and teens to build on their
           <span class="skills-color"> Focused Energy </span> and own the
           personal building block with a set of helpful
-          <span class="ability-color"> Vitalium-like Abilities</span> for their
-          own wellbeing and that of their own family and community.
+          <span class="ability-color"> Vitalium-like Abilities</span>
+          for their own wellbeing and that of their own family and community.
         </p>
 
         <p>
@@ -52,12 +58,13 @@
           <span class="skills-color"> Skills </span> smelt together to build
           <span class="ability-color"> Useful Abilities </span>
         </p>
-        <img
-          src="{{ url_for('static', filename='images/block5scale.png') }}"
-          class="img-fluid"
-          alt="A scale showing how Vitalium Ability is mixed Cobalt Goodness and Chromium Skills"
-        />
       </div>
+
+      <img
+        src="{{ url_for('static', filename='images/block5scale.png') }}"
+        class="img-fluid"
+        alt="A scale showing how Vitalium Ability is mixed Cobalt Goodness and Chromium Skills"
+      />
     </div>
   </div>
 {% endblock %}

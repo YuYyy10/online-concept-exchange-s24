@@ -7,16 +7,23 @@
   />
 
   <div class="container text-left">
-    <div class="row align-items-start justify-content-center">
-      <div class="col-10">
-        <h1>
-          <span class="energy-color">Block #2: Antimonial-Lead Energy</span>
-        </h1>
+    <div class="row align-items-start">
+      <h1>
+        <span class="energy-color">Block #2: Antimonial-Lead Energy</span>
+      </h1>
+      <img
+        src="{{ url_for('static', filename='images/block2header.png') }}"
+        class="img-fluid"
+        alt="The Human Domino Effect board with the Antimonial-Lead Energy Block"
+      />
+
+      <div class="col">
         <img
-          src="{{ url_for('static', filename='images/block2header.png') }}"
-          class="img-fluid"
-          alt="The Human Domino Effect board with the Antimonial-Lead Energy Block"
+          src="{{ url_for('static', filename = 'images/block2people.png') }}"
+          class="custom-img"
+          alt="Antap and Kuyohlatac ambassadors for lead focus and antimonial joy"
         />
+
         <p>
           Together they provide a way to build
           <span class="energy-color">The Antimonial-Lead Kind of Energy</span>.
@@ -72,12 +79,12 @@
           <span class="energy-color">Happy Optimal or Antimonial Energy</span>
           for learning and living together.
         </p>
-        <img
-          src="{{ url_for('static', filename='images/block2scale.png') }}"
-          class="img-fluid"
-          alt="A scale showing how Antimonial-Lead Energy is a mix of Antimony Joy and Lead Focus"
-        />
       </div>
+      <img
+        src="{{ url_for('static', filename='images/block2scale.png') }}"
+        class="img-fluid"
+        alt="A scale showing how Antimonial-Lead Energy is a mix of Antimony Joy and Lead Focus"
+      />
     </div>
   </div>
 {% endblock %}

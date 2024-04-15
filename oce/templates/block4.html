@@ -7,15 +7,21 @@
   />
 
   <div class="container text-left">
-    <div class="row align-items-start justify-content-center">
-      <div class="col-10">
-        <h1>
-          <span class="perception-color">Block #4: Nitinol Perception</span>
-        </h1>
+    <div class="row align-items-start">
+      <h1>
+        <span class="perception-color">Block #4: Nitinol Perception</span>
+      </h1>
+      <img
+        src="{{ url_for('static', filename='images/block4header.png') }}"
+        class="img-fluid"
+        alt="The Human Domino Effect board with the Nitinol Perception Block"
+      />
+
+      <div class="col">
         <img
-          src="{{ url_for('static', filename='images/block4header.png') }}"
-          class="img-fluid"
-          alt="The Human Domino Effect board with the Nitinol Perception Block"
+          src="{{ url_for('static', filename = 'images/block4people.png') }}"
+          class="custom-img"
+          alt="Luhks and Eviafilati ambassadors for titanium patience and nickel senses"
         />
         <p>
           Together they make for
@@ -63,12 +69,12 @@
           being flexible and able to interpret their environment in ways that
           help students make better decisions for themselves and others.
         </p>
-        <img
-          src="{{ url_for('static', filename='images/block4scale.png') }}"
-          class="img-fluid"
-          alt="A scale showing how Nitinol Perception is a mix of Nickel Senses and Titanium Patience"
-        />
       </div>
+      <img
+        src="{{ url_for('static', filename='images/block4scale.png') }}"
+        class="img-fluid"
+        alt="A scale showing how Nitinol Perception is a mix of Nickel Senses and Titanium Patience"
+      />
     </div>
   </div>
 {% endblock %}

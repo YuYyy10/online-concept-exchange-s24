@@ -3,28 +3,33 @@
 {% block content %}
   <link
     rel="stylesheet"
-    href="{{ url_for('static', filename='css/block9.css') }}"
+    href="{{ url_for('static', filename = 'css/block9.css') }}"
   />
-
   <div class="container text-left">
-    <div class="row align-items-start justify-content-center">
-      <div class="col-10">
-        <h1>
-          <span class="perception-color"
-            >Block #9: Functional Relationships</span
-          >
-        </h1>
+    <div class="row align-items-start">
+      <h1>
+        <span class="relationships-color"
+          >Block #9: Functional Relationships</span
+        >
+      </h1>
+      <img
+        src="{{ url_for('static', filename='images/block9header.png') }}"
+        src="{{ url_for('static', filename='images/block9header.png') }}"
+        class="img-fluid"
+        alt="The Human Domino Effect board with the Silver-Gold Block"
+      />
+      <div class="col">
         <img
-          src="{{ url_for('static', filename='images/block9header.png') }}"
-          class="img-fluid"
-          alt="The Human Domino Effect board with the Silver-Gold Block"
+          src="{{ url_for('static', filename = 'images/block9people.png') }}"
+          class="custom-img"
+          alt="Onibilib and Ekatnek Eseennet ambassadors for golden gentleness and silver respect"
         />
 
-        <h2>
+        <p>
           <span class="gentleness-color">Gentleness</span> and
           <span class="respect-color"> Respect </span> allow kids and teens to
           build strong connectins
-        </h2>
+        </p>
         <p>
           <span class="relationships-color"> Electrum Relationships! </span>
           Being a gentleman or a gentlewoman is a term that is somewhat
@@ -68,11 +73,12 @@
         </p>
 
         <p>Building Considerate Interactions</p>
-        <img
-          class="img-fluid"
-          src="{{ url_for('static', filename='images/block9scale.png') }}"
-        />
       </div>
+      <img
+        src="{{ url_for('static', filename='images/block9scale.png') }}"
+        class="img-fluid"
+        alt="A scale showing how gentleness and respect lead to relationships"
+      />
     </div>
   </div>
 {% endblock %}

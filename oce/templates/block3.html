@@ -7,15 +7,21 @@
   />
 
   <div class="container text-left">
-    <div class="row align-items-start justify-content-center">
-      <div class="col-10">
-        <h1>
-          <span class="stability-color">Block #3: Steel Stability</span>
-        </h1>
+    <div class="row align-items-start">
+      <h1>
+        <span class="stability-color">Block #3: Steel Stability</span>
+      </h1>
+      <img
+        src="{{ url_for('static', filename='images/block3header.png') }}"
+        class="img-fluid"
+        alt="The Human Domino Effect board with the Steel Stability Block"
+      />
+
+      <div class="col">
         <img
-          src="{{ url_for('static', filename='images/block3header.png') }}"
-          class="img-fluid"
-          alt="The Human Domino Effect board with the Steel Stability Block"
+          src="{{ url_for('static', filename= 'images/block3people.png') }}"
+          class="custom-img"
+          alt="Yhorop and Namyelos ambassadors for carbon care and iron safety"
         />
         <p>
           Together <span class="care-color">Care</span> and
@@ -79,12 +85,12 @@
           allows children and teens to discover their purpose within and achieve
           their personal goals with confidence and enthusiasm.
         </p>
-        <img
-          src="{{ url_for('static', filename='images/block3scale.png') }}"
-          class="img-fluid"
-          alt="A scale showing how Steel Stability is a mix of Carbon Care and Iron Safety"
-        />
       </div>
+      <img
+        src="{{ url_for('static', filename='images/block3scale.png') }}"
+        class="img-fluid"
+        alt="A scale showing how Steel Stability is a mix of Carbon Care and Iron Safety"
+      />
     </div>
   </div>
 {% endblock %}

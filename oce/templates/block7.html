@@ -5,16 +5,22 @@
     rel="stylesheet"
     href="{{ url_for('static', filename='css/block7.css') }}"
   />
-  <div class="container">
-    <div class="row align-items-start justify-content-center">
-      <div class="col-10">
-        <h1>
-          <span class="discernment-color">Block #7: Discernment</span>
-        </h1>
+  <div class="container text-left">
+    <div class="row align-items-start">
+      <h1>
+        <span class="discernment-color">Block #7: Discernment</span>
+      </h1>
+      <img
+        src="{{ url_for('static', filename='images/block7header.png') }}"
+        class="img-fluid"
+        alt="The Human Domino Effect board with the Discernment Block"
+      />
+
+      <div class="col">
         <img
-          src="{{ url_for('static', filename='images/block7header.png') }}"
-          class="img-fluid"
-          alt="The Human Domino Effect board with the Discernment Block"
+          src="{{ url_for( 'static', filename = 'images/block7people.png') }}"
+          class="custom-img"
+          alt="Aicrem and Arravan ambassadors for bismuth hope and tellurium knowledge"
         />
         <p>
           Together they make for strong
@@ -25,29 +31,30 @@
           This block represents the skills needed to be a logical, independent
           thinker. Block #7 is the top block of the
           <span class="science-color"> Science </span> and
-          <span class="science-color"> Health </span>. It is a representation of
-          the highest levels of science study and discovery. A good way to
-          understand the concept of discernment it to reflect on the life and
-          work of Louis Pasteur. Dr. Pasteur was a chemist and microbiologist
-          who lived in the 1800s and was renowned for his discoveries in
-          vaccination, pasteurization, and fermentation. During his time he
-          endured ridicule and doubt among many of his colleagues. Louis Pasture
-          saw the desperate need to cure and prevent deadly diseases, rabies,
-          and illness from bacterial contamination. He combined the elements of
-          Block #7 to use evidence based knowledge he had learned from other
-          scientists and his own experiments in combination with a sense of
-          faith, hope, trust in his process and the chain of evidence to make
-          the discoveries that has saved millions of lives. This combination of
-          following a chain of evidentiary based knowledge with a mindset of
-          faith in the scientific process has given the needed fuel to invent
-          and discover the advances made by individuals in our humans family for
-          thousands of generations. Allowing students the opportunity to
-          experience this process and the flow of mental energy to find the
-          answers and solutions to our most pressing problems not only gives
-          them the chance to build this characteristic within their own
-          character but it also allows them to better understand and thereby
-          support through funding, voting, and contribution the discoveries and
-          cures being studied by scientists today.
+          <span class="science-color"> Health </span> tower.tower. It is a
+          representation of the highest levels of science study and discovery. A
+          good way to understand the concept of discernment it to reflect on the
+          life and work of Louis Pasteur. Dr. Pasteur was a chemist and
+          microbiologist who lived in the 1800s and was renowned for his
+          discoveries in vaccination, pasteurization, and fermentation. During
+          his time he endured ridicule and doubt among many of his colleagues.
+          Louis Pasture saw the desperate need to cure and prevent deadly
+          diseases, rabies, and illness from bacterial contamination. He
+          combined the elements of Block #7 to use evidence based knowledge he
+          had learned from other scientists and his own experiments in
+          combination with a sense of faith, hope, trust in his process and the
+          chain of evidence to make the discoveries that has saved millions of
+          lives. This combination of following a chain of evidentiary based
+          knowledge with a mindset of faith in the scientific process has given
+          the needed fuel to invent and discover the advances made by
+          individuals in our humans family for thousands of generations.
+          Allowing students the opportunity to experience this process and the
+          flow of mental energy to find the answers and solutions to our most
+          pressing problems not only gives them the chance to build this
+          characteristic within their own character but it also allows them to
+          better understand and thereby support through funding, voting, and
+          contribution the discoveries and cures being studied by scientists
+          today.
         </p>
 
         <p>
@@ -70,12 +77,12 @@
           <span class="knowledge-color"> Knowledge</span> to make
           <span class="discernment-color"> Discernment</span>!
         </p>
-        <img
-          src="{{ url_for('static', filename='images/block7scale.png') }}"
-          class="img-fluid"
-          alt="A scale showing how Bizuride Discernment is a mix of Bismuth Hope and Tellurium Knowledge"
-        />
       </div>
+      <img
+        src="{{ url_for('static', filename='images/block7scale.png') }}"
+        class="img-fluid"
+        alt="A scale showing how Bizuride Discernment is a mix of Bismuth Hope and Tellurium Knowledge"
+      />
     </div>
   </div>
 {% endblock %}
