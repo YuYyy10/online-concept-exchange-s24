@@ -40,7 +40,7 @@ def get_db() -> sql.Connection:
             raise FileNotFoundError(
                 'App static folder not registered properly. Unable to locate database.'
             )
-        con = sql.connect(Path(current_app.static_folder) / 'oce.db')
+        con = sql.connect(Path(current_app.static_folder) / current_app.config['DB_NAME'] )
         con.row_factory = _dict_factory
         db = g._database = con
     return db
@@ -67,6 +67,10 @@ def create_user(
     """
     con = get_db()
     cur = con.cursor()
+
+    if profile_pic is None:
+        with open(Path(current_app.static_folder) / 'images' / '__DEFAULT.jpg', 'rb') as fp:
+            profile_pic = fp.read()
 
     new_user_data = (
         str(create_uuid()),
