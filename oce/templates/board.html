@@ -13,6 +13,7 @@
   defer
 ></script>
 
+<!-- Some of these classes and ID's are used by maphilight, they shouldn't change! -->
 <div id="map-wrapper" class="w-100 h-100">
   <div class="map">
     <img
@@ -24,6 +25,11 @@
     />
   </div>
 </div>
+<!-- 
+  The coords tag for each area define a block on the game board, they shouldn't change!
+  
+  The data-character-* tags can change if a new character is created for that block.
+-->
 <map name="game-board-map">
   <!-- First Column -->
   <area
