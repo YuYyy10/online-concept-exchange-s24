@@ -378,75 +378,70 @@
           <!-- to access the outer loop index in the inner loop, we need to rename it-->
           {% set outerloop = loop %}
           <div class="accordion-item">
-          <h2 class="accordion-header">
-          <!-- the tilde ~ character concats strings in Flask -->
-          <button
-          class="accordion-button {{ '' if loop.index == 1 else 'collapsed' }}"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="{{ '#collapse' ~ round[0] }}"
-          aria-expanded="{{ 'true' if loop.index == 1 else 'false' }}"
-          aria-controls="{{ 'collapse' ~ round[0] }}"
-          >
-          {{ 'Round ' ~ round[0] }}
-          </button>
-          </h2>
-          <!-- Collapse wrapper for hidden accordian menus -->
-          <div
-          id="{{ 'collapse' ~ round[0] }}"
-          class="accordion-collapse collapse {{ 'show' if loop.index == 1 else '' }}"
-          data-bs-parent="#rounds-accordian"
-          >
-          <div class="accordion-body">
-          <!-- Display round title then the list of footstone tiles -->
-          <h5 class="text-center">{{ round[1] }}</h5>
-          <ul class="list-group">
-          {% for pair in round[2] %}
-          <li
-          class="list-group-item d-flex justify-content-md-between flex-md-nowrap flex-md-row flex-column align-items-start"
-          >
-          {{ pair[0] }}
-          <!--
-          The color of each stone is determined by:
-          1. the (inner) loop index, which increments with each stone (loop indexes start at 1, not 0!)
-          2. the (outer) loop index, which maintains the count when the round increments (10 stones in each round)
-          3. the number of colors available (6 colors that loop, see index.css)
+            <h2 class="accordion-header">
+              <!-- the tilde ~ character concats strings in Flask -->
+              <button
+                class="accordion-button {{ '' if loop.index == 1 else 'collapsed' }}"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="{{ '#collapse' ~ round[0] }}"
+                aria-expanded="{{ 'true' if loop.index == 1 else 'false' }}"
+                aria-controls="{{ 'collapse' ~ round[0] }}"
+              >
+              {{ 'Round ' ~ round[0] }}
+              </button>
+            </h2>
+            <!-- Collapse wrapper for hidden accordian menus -->
+            <div
+              id="{{ 'collapse' ~ round[0] }}"
+              class="accordion-collapse collapse {{ 'show' if loop.index == 1 else '' }}"
+              data-bs-parent="#rounds-accordian"
+            >
+              <div class="accordion-body">
+                <!-- Display round title then the list of footstone tiles -->
+                <h5 class="text-center">{{ round[1] }}</h5>
+                <ul class="list-group">
+                  {% for pair in round[2] %}
+                    <li
+                      class="list-group-item d-flex justify-content-md-between flex-md-nowrap flex-md-row flex-column align-items-start"
+                    >
+                      {{ pair[0] }}
+                      <!--
+                      The color of each stone is determined by:
+                      1. the (inner) loop index, which increments with each stone (loop indexes start at 1, not 0!)
+                      2. the (outer) loop index, which maintains the count when the round increments (10 stones in each round)
+                      3. the number of colors available (6 colors that loop, see index.css)
 
-          Example: the 3rd stone in Round 2 is (3 - 1) + (2 * 10)) % 6 = 22 % 6 = stone-4
-          move index to 0 ^
+                      Example: the 3rd stone in Round 2 is (3 - 1) + (2 * 10)) % 6 = 22 % 6 = stone-4
+                                                move index to 0 ^
 
-          (in the game, the first round is Round 0, not Round 1)
-          -->
-          <span
-          class="badge {{ 'stone-' ~ (((loop.index - 1) + (10 * (outerloop.index - 1))) % 6) }} rounded-pill text-black"
-          >
-          {{ pair[1] }}
-          </span>
-          </li>
-          {% endfor %}
-          </ul>
+                      (in the game, the first round is Round 0, not Round 1)
+                      -->
+                      <span
+                        class="badge {{ 'stone-' ~ (((loop.index - 1) + (10 * (outerloop.index - 1))) % 6) }} rounded-pill text-black"
+                      >
+                      {{ pair[1] }}
+                      </span>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
           </div>
-          </div>
-          </div>
-          {% endfor %}
-          </div>
-          </div>
-
-          <!-- Make the tile board image appear before the accordian at smaller screen sizes -->
-          <div class="col-12 col-lg-6 mb-4 order-0 order-lg-1 d-flex flex-column align-items-center">
-          <img
-          src="{{ url_for('static', filename='images/rounds.png') }}"
-          class="img-fluid"
-          alt="The Human Domino Effect game board with arrows and text describing the rounds of the game"
-          />
-          <h5 id="tiles-link"><a href="{{ url_for('content.tiles') }}" target="_blank">Click to see the full diagram with video links!</a></h5>
-          </div>
-
-          </div>
-          </div>
-          {% endblock
-        %}
+        {% endfor %}
       </div>
     </div>
+        
+    <!-- Make the tile board image appear before the accordian at smaller screen sizes -->
+    <div class="col-12 col-lg-6 mb-4 order-0 order-lg-1 d-flex flex-column align-items-center">
+      <img
+        src="{{ url_for('static', filename='images/rounds.png') }}"
+        class="img-fluid"
+        alt="The Human Domino Effect game board with arrows and text describing the rounds of the game"
+      />
+      <h5 id="tiles-link"><a href="{{ url_for('content.tiles') }}" target="_blank">Click to see the full diagram with video links!</a></h5>
+    </div>
+
   </div>
 </div>
+{% endblock %}
