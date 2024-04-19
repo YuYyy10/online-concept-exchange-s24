@@ -22,7 +22,7 @@ const CHARACTER_PLURAL_S = document.getElementById("character-plural-s");
 
 /**
  * 500 pixels was the original image size when the block
- * areas were defined.
+ * areas were defined. THIS SHOULDN'T CHANGE!
  *
  * The original area coords are stored here because if only the
  * most recent area coords are rescaled repeatedly, rounding
@@ -52,6 +52,7 @@ function setupBlockAreas() {
   resizeBlockAreas();
 
   // adjust the size of the canvas over the map
+  // (with a stroke width that corresponds to the size)
   $(function () {
     $(".map").maphilight({
       strokeWidth: Math.round(wrapperWidth / 100),
@@ -86,22 +87,22 @@ function setBlockLabel(e) {
     e.target.tagName.toLowerCase() === "area" &&
     e.target.parentElement.getAttribute("name") === "game-board-map"
   ) {
-    let blockDesc = e.target.getAttribute("alt");
-    let blockName = e.target.getAttribute("id").split("-");
+    let blockName = e.target.getAttribute("alt");
+    let blockNumber = e.target.getAttribute("id").split("-");
 
-    // capitalize blockName words
-    blockName = blockName.map((word) => {
+    // capitalize blockNumber words
+    blockNumber = blockNumber.map((word) => {
       return word[0].toUpperCase() + word.substr(1);
     });
 
     let blockColor =
       "#" + JSON.parse(e.target.getAttribute("data-maphilight"))["strokeColor"];
 
-    BLOCK_NUMBER.innerText = blockName.join(" ");
+    BLOCK_NUMBER.innerText = blockNumber.join(" ");
     BLOCK_NUMBER.style.color = blockColor;
     BLOCK_PLACEHOLDER.innerText = " in ";
 
-    BLOCK_NAME.innerText = blockDesc;
+    BLOCK_NAME.innerText = blockName;
     BLOCK_NAME.style.color = blockColor;
 
     let names = e.target.getAttribute("data-character-name");
@@ -116,6 +117,7 @@ function setBlockLabel(e) {
 }
 
 function resetBlockLabel(e) {
+  // reset fields to placeholders
   if (e.target.getAttribute("id") === "game-board-image") {
     BLOCK_NUMBER.innerText = "";
     BLOCK_PLACEHOLDER.innerText = " each block by clicking one on the board!";

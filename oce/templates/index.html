@@ -1,3 +1,8 @@
+<!-- 
+  WARNING: Formatters like Prettier that don't support Flask/Jinja
+  may break the indenting in this file!
+-->
+
 <!-- include the navbar and footer -->
 {% extends 'base.html' %}
 <!-- this is the content block that corresponds to base.html -->
@@ -15,6 +20,12 @@
 -->
 <div class="container-fluid">
   <div class="row align-items-center my-10 py-2-5">
+    <!--
+      At large resolutions, the title, board, and character have equal column widths (col-4)
+      At medium resolutions, display the title above (full col-12) and the board 
+      and character below (each with col-6)
+      At small resolutions, display each with full width (col-12) so they stack
+    -->
     <div class="col-12 col-md-12 col-lg-4">
       <!-- 
         At smaller resolutions, display the title with text centered
@@ -75,28 +86,30 @@
         <img
           src="{{ url_for('static', filename='images/homebuilding.png') }}"
           class="card-img-top border-bottom border-4 border-primary"
-          alt="A sketch of figures showing the human family"
+          alt="A sketch of stick figures building the frame of a house"
         />
         <div class="card-body">
           <h5 class="card-title text-center">Community Then</h5>
-          <p>
-            There was a time when children and teens could see and experience
-            friends and neighbors working together to make our communities a
-            better place for everyone to live.
-          </p>
+          <div class="card-text">
+            <p>
+              There was a time when children and teens could see and experience
+              friends and neighbors working together to make our communities a
+              better place for everyone to live.
+            </p>
 
-          <p>
-            While it is true that there were the barriers of prejudice,
-            oppression, and inequality in our collective history, there were
-            also more chances than today for children to see people working
-            together in their village.
-          </p>
+            <p>
+              While it is true that there were the barriers of prejudice,
+              oppression, and inequality in our collective history, there were
+              also more chances than today for children to see people working
+              together in their village.
+            </p>
 
-          <p>
-            Children could see people building houses with each other, growing
-            and harvesting food with one other, and chipping in to help when
-            there was crisis and illness.
-          </p>
+            <p>
+              Children could see people building houses with each other, growing
+              and harvesting food with one other, and chipping in to help when
+              there was crisis and illness.
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -106,27 +119,29 @@
         <img
           src="{{ url_for('static', filename='images/humanfamily.png') }}"
           class="card-img-top border-bottom border-4 border-primary"
-          alt="A sketch of stick figures building the frame of a house"
+          alt="A sketch of figures showing the human family"
         />
         <div class="card-body">
           <h5 class="card-title text-center">Community Now</h5>
-          <p>
-            Community cohesion is not as visible for our youth today, with more
-            of our time spent in separate homes, vehicles, delivery services,
-            and the need to socially distance due to Covid-19.
-          </p>
-          <p>
-            Children and teens too often suffer from bullies and lack of
-            meaningful opportunities. We have problems we can't solve well
-            unless we all choose to work together with our personal best and a
-            clear understanding of a goal.
-          </p>
-          <p>
-            When we consider the lessons we have learned as a human family, it
-            seems past time that we stop making the same mistakes that cause
-            preventable harm. Somehow, after all this time, many students don't
-            understand that they're valuable and needed.
-          </p>
+          <div class="card-text">
+            <p>
+              Community cohesion is not as visible for our youth today, with
+              more of our time spent in separate homes, vehicles, delivery
+              services, and the need to socially distance due to Covid-19.
+            </p>
+            <p>
+              Children and teens too often suffer from bullies and lack of
+              meaningful opportunities. We have problems we can't solve well
+              unless we all choose to work together with our personal best and a
+              clear understanding of a goal.
+            </p>
+            <p>
+              When we consider the lessons we have learned as a human family, it
+              seems past time that we stop making the same mistakes that cause
+              preventable harm. Somehow, after all this time, many students
+              don't understand that they're valuable and needed.
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -140,23 +155,25 @@
         />
         <div class="card-body">
           <h5 class="card-title text-center">Community Going Forward</h5>
-          <p>
-            <strong>The Human Domino Effect</strong> is a project that involves
-            community partners, schools, and families as they work together to
-            build an online game that reveals what community is and how a
-            well-functioning community can solve big problems.
-          </p>
-          <p>
-            The game provides a fun opportunity for students to stack up a model
-            with fun building blocks to demonstrate how we are each needed in
-            the process of creating well-functioning homes, schools, and
-            workplaces that combine to make great communities.
-          </p>
-          <p>
-            Helping students learn the attributes of each building block is a
-            way to respect their individual dignity and brilliance. Then, they
-            can choose where they fit in the movement to make a difference!
-          </p>
+          <div class="card-text">
+            <p>
+              <strong>The Human Domino Effect</strong> is a project that
+              involves community partners, schools, and families as they work
+              together to build an online game that reveals what community is
+              and how a well-functioning community can solve big problems.
+            </p>
+            <p>
+              The game provides a fun opportunity for students to stack up a
+              model with fun building blocks to demonstrate how we are each
+              needed in the process of creating well-functioning homes, schools,
+              and workplaces that combine to make great communities.
+            </p>
+            <p>
+              Helping students learn the attributes of each building block is a
+              way to respect their individual dignity and brilliance. Then, they
+              can choose where they fit in the movement to make a difference!
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -170,13 +187,21 @@
 
   <div class="row justify-content-center text-start mb-5 py-10">
     <div class="col-12 col-lg-4 mb-4">
+      <!-- 
+        A nested grid is used so the two cards on the left and right
+        can stack even in full width. There is a "row" within the col-4
+        where each card takes up the full width, making them stack
+
+        The middle image could be restyled to provide better
+        responsiveness as the screen gets smaller (it tends to
+        squish before it hits the breakpoint and stacks)
+      -->
       <div class="row">
         <div class="col-12">
           <div class="card m-2">
             <div class="card-body">
               <h5 class="card-title text-center">Level One</h5>
               <p class="card-text">
-                <!-- FIXME others -->
                 Develop awareness and mutual respect for our own and others'
                 personal health, liberty, and happiness by using the
                 <strong>three circle Venn diagram</strong>.
@@ -353,68 +378,70 @@
           <!-- to access the outer loop index in the inner loop, we need to rename it-->
           {% set outerloop = loop %}
           <div class="accordion-item">
-          <h2 class="accordion-header">
-          <button
-          class="accordion-button {{ '' if loop.index == 1 else 'collapsed' }}"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="{{ '#collapse' ~ round[0] }}"
-          aria-expanded="{{ 'true' if loop.index == 1 else 'false' }}"
-          aria-controls="{{ 'collapse' ~ round[0] }}"
-          >
-          {{ 'Round ' ~ round[0] }}
-          </button>
-          </h2>
-          <div
-          id="{{ 'collapse' ~ round[0] }}"
-          class="accordion-collapse collapse {{ 'show' if loop.index == 1 else '' }}"
-          data-bs-parent="#rounds-accordian"
-          >
-          <div class="accordion-body">
-          <h5 class="text-center">{{ round[1] }}</h5>
-          <ul class="list-group">
-          {% for pair in round[2] %}
-          <li
-          class="list-group-item d-flex justify-content-md-between flex-md-nowrap flex-md-row flex-column align-items-start"
-          >
-          {{ pair[0] }}
-          <!--
-          The color of each stone is determined by:
-          1. the (inner) loop index, which increments with each stone (loop indexes start at 1, not 0!)
-          2. the (outer) loop index, which maintains the count when the round increments (10 stones in each round)
-          3. the number of colors available (6 colors that loop, see index.css)
+            <h2 class="accordion-header">
+              <!-- the tilde ~ character concats strings in Flask -->
+              <button
+                class="accordion-button {{ '' if loop.index == 1 else 'collapsed' }}"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="{{ '#collapse' ~ round[0] }}"
+                aria-expanded="{{ 'true' if loop.index == 1 else 'false' }}"
+                aria-controls="{{ 'collapse' ~ round[0] }}"
+              >
+              {{ 'Round ' ~ round[0] }}
+              </button>
+            </h2>
+            <!-- Collapse wrapper for hidden accordian menus -->
+            <div
+              id="{{ 'collapse' ~ round[0] }}"
+              class="accordion-collapse collapse {{ 'show' if loop.index == 1 else '' }}"
+              data-bs-parent="#rounds-accordian"
+            >
+              <div class="accordion-body">
+                <!-- Display round title then the list of footstone tiles -->
+                <h5 class="text-center">{{ round[1] }}</h5>
+                <ul class="list-group">
+                  {% for pair in round[2] %}
+                    <li
+                      class="list-group-item d-flex justify-content-md-between flex-md-nowrap flex-md-row flex-column align-items-start"
+                    >
+                      {{ pair[0] }}
+                      <!--
+                      The color of each stone is determined by:
+                      1. the (inner) loop index, which increments with each stone (loop indexes start at 1, not 0!)
+                      2. the (outer) loop index, which maintains the count when the round increments (10 stones in each round)
+                      3. the number of colors available (6 colors that loop, see index.css)
 
-          Example: the 3rd stone in Round 2 is (3 - 1) + (2 * 10)) % 6 = 22 % 6 = stone-4
-          move index to 0 ^
+                      Example: the 3rd stone in Round 2 is (3 - 1) + (2 * 10)) % 6 = 22 % 6 = stone-4
+                                                move index to 0 ^
 
-          (in the game, the first round is Round 0, not Round 1)
-          -->
-          <span
-          class="badge {{ 'stone-' ~ (((loop.index - 1) + (10 * (outerloop.index - 1))) % 6) }} rounded-pill text-black"
-          >{{ pair[1] }}</span
-          >
-          </li>
-          {% endfor %}
-          </ul>
+                      (in the game, the first round is Round 0, not Round 1)
+                      -->
+                      <span
+                        class="badge {{ 'stone-' ~ (((loop.index - 1) + (10 * (outerloop.index - 1))) % 6) }} rounded-pill text-black"
+                      >
+                      {{ pair[1] }}
+                      </span>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
           </div>
-          </div>
-          </div>
-          {% endfor %}
-          </div>
-          </div>
-          <div class="col-12 col-lg-6 mb-4 order-0 order-lg-1 d-flex flex-column align-items-center">
-          <img
-          src="{{ url_for('static', filename='images/rounds.png') }}"
-          class="img-fluid"
-          alt="The Human Domino Effect game board with arrows and text describing the rounds of the game"
-          />
-          <h5 id="tiles-link"><a href="{{ url_for('content.tiles') }}" target="_blank">Click to see the full diagram with video links!</a></h5>
-          </div>
-          </div>
-          </div>
-          {% endblock
-        %}
+        {% endfor %}
       </div>
     </div>
+        
+    <!-- Make the tile board image appear before the accordian at smaller screen sizes -->
+    <div class="col-12 col-lg-6 mb-4 order-0 order-lg-1 d-flex flex-column align-items-center">
+      <img
+        src="{{ url_for('static', filename='images/rounds.png') }}"
+        class="img-fluid"
+        alt="The Human Domino Effect game board with arrows and text describing the rounds of the game"
+      />
+      <h5 id="tiles-link"><a href="{{ url_for('content.tiles') }}" target="_blank">Click to see the full diagram with video links!</a></h5>
+    </div>
+
   </div>
 </div>
+{% endblock %}
