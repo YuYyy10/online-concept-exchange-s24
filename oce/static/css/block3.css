@@ -1,0 +1,20 @@
+.care-color {
+  color: black;
+  font-weight: bold;
+}
+
+.safety-color {
+  color: #9a9a9a;
+  font-weight: bold;
+}
+
+.stability-color {
+  color: #818181;
+  font-weight: bold;
+}
+.custom-img{
+	width: 500px;
+	height: 500px;
+        float: right;
+        margin-left 15px;
+}

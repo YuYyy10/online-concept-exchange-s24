@@ -1,0 +1,32 @@
+<!-- WARNING:
+    This page is NOT production safe yet.
+    
+    It should be integrated with WTForms or another secure 
+    form library for safe password handling. It also 
+    needs an anti-spam mechanism and features to prevent 
+    XSS and injection attacks.
+  -->
+
+<link href="LoginPage.css" type="text/css" rel="stylesheet" />
+
+<h1>Login to the Human Domino Project!</h1>
+
+<form name="LoginForm" action="" method="post">
+  <div class="container">
+    <label>Username/Email: </label>
+    <input
+      type="text"
+      placeholder="Enter your Username or Email"
+      name="username"
+      required
+    />
+    <label>Password: </label>
+    <input
+      type="password"
+      placeholder="Enter your password"
+      name="password"
+      required
+    />
+    <button type="submit">Login</button>
+  </div>
+</form>

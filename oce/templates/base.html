@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Online Concept Exchange</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400;900&display=swap" rel="stylesheet">
+</head>
+<style>
+  body{
+    padding-top: 100px;
+  } 
+  .nav-link {
+    font-family: "Londrina Solid";
+  }
+</style>
+<body>
+  <nav class="navbar fixed-top navbar-expand-md navbar-light bg-light">
+    <div class="container">
+    <a
+       href="{{ url_for('home') }}"
+       class="navbar-brand mb-0 h1">
+         <img
+          class="d-inline-block align-top"
+          src="{{ url_for('static', filename='images/humandominoeffectlogo.png') }}"
+	  width="100" height="100" />
+          
+    </a>
+    <button
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#navbarNav"
+    class="navbar-toggler"
+    aria-controls="navbarNav"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div
+      class="collapse navbar-collapse"
+      id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <h5><a href="{{ url_for('home') }}" class="nav-link active">
+            Home
+          </a></h5>
+        </li>
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle"
+          id="navbarDropdown"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+          >
+            <h5 class="d-inline-block">How to Live Building Blocks </h5>
+          </a>
+          <ul class="dropdown-menu"
+          aria-labelledby="navbarDropdown">
+            <li><a href="{{ url_for('content.block1') }}"
+            class="dropdown-item">Block 1: Healthy Place to Live and Learn</a></li>
+            <li><a href="{{ url_for('content.block2') }}"
+            class="dropdown-item">Block 2: Energy for Concentration</a></li>
+            <li><a href="{{ url_for('content.block3') }}"
+            class="dropdown-item">Block 3: Stability</a></li>
+            <li><a href="{{ url_for('content.block4') }}"
+            class="dropdown-item">Block 4: Practiced Perception</a></li>
+            <li><a href="{{ url_for('content.block5') }}"
+            class="dropdown-item">Block 5: Developed Abilities</a></li>
+            <li><a href="{{ url_for('content.block6') }}"
+            class="dropdown-item">Block 6: Responsibility</a></li>
+            <li><a href="{{ url_for('content.block7') }}"
+            class="dropdown-item">Block 7: Discernment</a></li>
+            <li><a href="{{ url_for('content.block8') }}"
+            class="dropdown-item">Block 8: Resilience</a></li>
+            <li><a href="{{ url_for('content.block9') }}"
+            class="dropdown-item">Block 9: Functional Relationships</a></li>
+          </ul>
+        </li>
+        <li class="nav-item active">
+        <h5><a href="#" class="nav-link text-nowrap">
+            Concept Exchange
+          </a></h5>
+        </li>
+        <li class="nav-item active">
+        <h5><a href="#" class="nav-link">
+            Login
+          </a></h5>
+        </li>
+        <li class="nav-item active">
+        <h5><a href="#" class="nav-link">
+            Contact
+          </a> </h5>
+        </li>
+      </ul>
+    </div>
+    </div>
+  </nav>
+
+  <hr>
+
+  <div class="mt-3">
+	  {% block content %}{% endblock %}
+  </div>
+</body>
+</html>
