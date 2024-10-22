@@ -54,3 +54,11 @@ def login():
 @content.route('/content/Contact/')
 def contact():
   return render_template('ContactPage.html')
+
+@content.route('/content/Shop/')
+def shop():
+  return render_template('Shop.html')
+
+@content.route('/content/Cart/')
+def cart():
+  return render_template('Cart.html')
