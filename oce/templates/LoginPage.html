@@ -7,6 +7,10 @@
     XSS and injection attacks.
   -->
 
+{% extends 'base.html' %}
+
+{% block content %}
+
 <link href="LoginPage.css" type="text/css" rel="stylesheet" />
 
 <h1>Login to the Human Domino Project!</h1>
@@ -30,3 +34,6 @@
     <button type="submit">Login</button>
   </div>
 </form>
+
+
+{% endblock %}
