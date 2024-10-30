@@ -42,3 +42,23 @@ def block9():
 @content.route('/content/tiles/')
 def tiles():
     return send_file('static/docs/Human-Domino-Effect-Footprint-Tiles.pdf', download_name='Human-Domino-Effect-Footprint-Tiles.pdf')
+
+@content.route('/content/ConceptExchange/')
+def concept_exchange():
+  return render_template('mainForum.html')
+
+@content.route('/content/Login/')
+def login():
+  return render_template('LoginPage.html')
+
+@content.route('/content/Contact/')
+def contact():
+  return render_template('ContactPage.html')
+
+@content.route('/content/Shop/')
+def shop():
+  return render_template('Shop.html')
+
+@content.route('/content/Cart/')
+def cart():
+  return render_template('Cart.html')
