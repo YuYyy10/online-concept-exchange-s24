@@ -62,3 +62,7 @@ def shop():
 @content.route('/content/Cart/')
 def cart():
   return render_template('Cart.html')
+
+@content.route('/content/NewPost/')
+def forumPost():
+  return render_template('forumPost.html')
