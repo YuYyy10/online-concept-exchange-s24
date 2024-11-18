@@ -1,6 +1,54 @@
-{% extends 'base.html' %}
 
 {% block content %}
-<!-- code -->
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cart</title>
+    <link rel="stylesheet" href="static/css/Cart.css" type = "text/css"/>
+    <!-- Add Specific Font Later (CHECKED) -->
+    <link href="https://fonts.googleapis.com/css2?family=Varela&display=swap" rel="stylesheet">
+
+</head>
+<section class="contact-section">
+    <div class="contact-intro">
+      <h2 class="contact-title">Get in Touch</h2>
+      <p class="contact-description">
+        Fill out the form below and we'll get back to you as soon as possible.
+      </p>
+    </div>
+  
+    <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+  
+      <input type="hidden" name="access_key" value="518a5a9e-038b-4915-9a41-9cb2cf1067f3" />
+      <input type="hidden" name="subject" value="New Contact Form Submission from Web3Forms" />
+      <input type="hidden" name="from_name" value="My Website" />
+
+      {% for item in cart_items %}
+      <input type="hidden" name="cart_items[]" value="{{ item.name }} (x{{ item.quantity }}): ${{ item.price }}" />
+      {% endfor %}
+
+  
+      <div class="form-group-container">
+        <div class="form-group">
+          <label for="name" class="form-label">Name</label>
+          <input id="name" name="name" class="form-input" placeholder="Your name" type="text" />
+        </div>
+        <div class="form-group">
+          <label for="email" class="form-label">Email</label>
+          <input id="email" name="email" class="form-input" placeholder="Your email" type="email" />
+        </div>
+        <div class="form-group">
+          <label for="phone" class="form-label">Phone</label>
+          <input id="phone" name="phone" class="form-input" placeholder="+1 (234) 56789" type="text" />
+        </div>
+        <div class="form-group">
+          <label for="message" class="form-label">Message</label>
+          <textarea class="form-textarea" id="message" name="message" placeholder="Your message"></textarea>
+        </div>
+      </div>
+      <button class="form-submit" type="submit">Send Request</button>
+    </form>
+  
+  </section>
 
 {% endblock %}
