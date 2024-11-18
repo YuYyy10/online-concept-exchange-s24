@@ -19,3 +19,8 @@
         float: right;
         margin-left 15px;
 }
+@media (max-width: 600px){
+  .main-container {
+      padding: 10px;
+  }
+}
