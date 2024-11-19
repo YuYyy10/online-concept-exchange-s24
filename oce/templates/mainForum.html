@@ -15,7 +15,7 @@
 
       <hr>
 
-      <span class="fs-4"> Filters </span>
+      <!-- <span class="fs-4"> Filters </span>
       <form action="/filter" method="post">
         <div class="list-group">
           <label class="list-group-item d-flex gap-2">
@@ -78,7 +78,7 @@
           <button type="button" onclick="uncheckAll()">Uncheck All</button>
           <button type="submit">Apply Filter</button>
         </div>
-      </form>
+      </form> -->
     </div>
 
     <div class="modal fade" id="threadModal" tabindex="-1" aria-labelledby="threadModalLabel" aria-hidden="true">
@@ -106,16 +106,16 @@
     <div class="col-md-9">
       <div class="col-md-12">
       {% if posts %}
-        <h6>Concept Exchange Posts</h6>
+        <h3>Concept Exchange Posts</h3>
     
         {% for post in posts %}
-          <div class="d-flex text-body-secondary pt-3">
-              <p class="pb-3 mb-0 small lh-sm border-bottom">
-                  <strong class="d-block text-gray-dark">
-                      <a>{{post.author_uuid}}</a>
-                  </strong>
-                  {{ post.text_content }}
-              </p>
+          <div class="d-flex text-body-secondary pt-3" style="font-size: 1.5rem;">
+            <p class="pb-3 mb-0 small lh-sm border-bottom">
+                <strong class="d-block text-gray-dark">
+                    <a style="font-size: 1.2rem;">{{post.author_uuid}}</a>
+                </strong>
+                <span style="font-size: 1.1rem;">{{ post.text_content }}</span>
+            </p>
           </div>
         {% endfor %}
 
