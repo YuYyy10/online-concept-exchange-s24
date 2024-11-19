@@ -79,11 +79,15 @@ def test_update_user_password(app, setup_database, setup_password_hasher):
 
 def test_update_user_profile_pic(app, setup_database):
     with app.app_context():
-        ...
+        u = User(**get_user_by_email('new.email@tsest.com'))
+        update_user_profile_pic(u, b'\x89PNG')
+        assert b'\x89PNG' in get_user_by_email('new.email@tsest.com').values()
 
 def test_update_user_about_me(app, setup_database):
     with app.app_context():
-        ...
+        u = User(**get_user_by_email('new.email@tsest.com'))
+        update_user_about_me(u, 'ABOUT ME')
+        assert 'ABOUT ME' in get_user_by_email('new.email@tsest.com').values()
 
 def test_delete_user(app, setup_database):
     with app.app_context():
