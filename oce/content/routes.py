@@ -47,6 +47,10 @@ def tiles():
 def concept_exchange():
   return render_template('mainForum.html')
 
+@content.route('/content/resources/<selected_age>')
+def resources(selected_age):
+    return render_template('resources.html', selected_age=selected_age)
+
 @content.route('/content/Login/')
 def login():
   return render_template('LoginPage.html')
