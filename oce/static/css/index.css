@@ -84,3 +84,8 @@ h2,
 .stone-5 {
   background-color: #fadc9a;
 }
+@media (max-width: 600px){
+  .main-container {
+      padding: 10px;
+  }
+}
