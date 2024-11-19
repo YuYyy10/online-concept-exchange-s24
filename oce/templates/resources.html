@@ -1,0 +1,136 @@
+<!-- include the navbar and footer -->
+{% extends 'base.html' %}
+<!-- this is the content block that corresponds to base.html -->
+{% block content %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/index.css') }}"
+/>
+<!-- 
+  The home page is defined as a Bootstrap grid
+  (https://getbootstrap.com/docs/5.3/layout/grid/)
+
+  This link can explain many of the Bootstrap CSS
+  classes on each element, such as row and col-*
+-->
+
+<head>
+  <title>Resources</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      padding-top: 100px;
+      scroll-behavior: smooth;
+    }
+    .section {
+      padding: 50px 0;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <h1 class="mb-4">Resources</h1>
+
+    <h2 class="mb-3">Building Strong Communities Starts with Meeting Every Child’s Basic Needs</h2>
+
+    <!-- Paragraph under subtitle -->
+    <p class="lead">
+        Children are affected either detrimentally or beneficially by the well-being and behavior of their peers, therefore, it is imperative, that all children and teens in our communities, receive the best upbringing possible at home, at school, and in their neighborhoods. Working to provide every child with the best possible nutrition and environment for learning, playing, and resting is an ongoing challenge for parents, educators, healthcare providers, and community leaders. Foundations for our future require ensuring every child has what they need to thrive. Every child’s well-being impacts not only their peers but also the entire community, shaping the future of our towns and neighborhoods. When children grow up in supportive, nurturing environments, we all benefit. This is why it’s essential that all children and teens have access to the basics—proper nutrition, safe spaces for learning, play, and rest, and the guidance they need to thrive. Investing in the health and happiness of every child is an investment in the well-being of our communities. Together, parents, educators, healthcare providers, and community leaders can help build a brighter future for all by ensuring every child has the foundation they need.
+    </p>
+
+    <p class="lead">
+        When we unite to identify the essential resources every student needs to thrive and reach out to every home through trusted institutions and charities, we set a positive domino effect in motion—one that builds support, opportunity, and resilience across our entire community.
+    </p>
+
+    <p class="lead">
+        Our goal with this initiative its to help every family gather these items for the children in their home. We cannot guarantee that we will be able to provide you with the items you need. We will do our best to connect with charitable groups who can provide these items. If you are able to provide items on this list to families in need, please contact us at <b> 859-333-9790 </b>.
+    </p>
+
+    <!-- All resource sections (0 to 18) -->
+    <div class="resource-content">
+        {% if selected_age == 'under-1' %}
+        <h2 class="mb-3">Here are the resources for children under 18 months old.</h2>
+        <p class="lead">Please look for the age group of the child(ren) in your home. Mark the “H” circle for each of the items you already have in your home for each specific age group for each of your children. For example, if you have a five year old, look at each of the items in the column for the age group, “3 years old - six years old.” Check the “H” circle for each of the items you currently HAVE in your home. If you are in NEED of that specific item please check the “N” circle. (Items needed for every age group are listed in the left- hand column.)</p>
+          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd9YM1q7BS5jT_QZmqWpGEUMRQoUonhAMUUGpFDff-9bs6zNw/viewform?embedded=true" width="640" height="382" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+          
+        {% elif selected_age in ['1', '2', '3'] %}
+        <h2 class="mb-3">Here are the resources for children 1-3 years old.</h2>
+        <p class="lead">Please look for the age group of the child(ren) in your home. Mark the “H” circle for each of the items you already have in your home for each specific age group for each of your children. For example, if you have a five year old, look at each of the items in the column for the age group, “3 years old - six years old.” Check the “H” circle for each of the items you currently HAVE in your home. If you are in NEED of that specific item please check the “N” circle. (Items needed for every age group are listed in the left- hand column.)</p>
+          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd9YM1q7BS5jT_QZmqWpGEUMRQoUonhAMUUGpFDff-9bs6zNw/viewform?embedded=true" width="640" height="382" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+         
+        {% elif selected_age in ['4', '5', '6'] %}
+        <h2 class="mb-3">Here are the resources for children 3-6 years old.</h2>
+        <p class="lead">Please look for the age group of the child(ren) in your home. Mark the “H” circle for each of the items you already have in your home for each specific age group for each of your children. For example, if you have a five year old, look at each of the items in the column for the age group, “3 years old - six years old.” Check the “H” circle for each of the items you currently HAVE in your home. If you are in NEED of that specific item please check the “N” circle. (Items needed for every age group are listed in the left- hand column.)</p>
+          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd9YM1q7BS5jT_QZmqWpGEUMRQoUonhAMUUGpFDff-9bs6zNw/viewform?embedded=true" width="640" height="382" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+          
+        {% elif selected_age in ['7', '8', '9'] %}
+        <h2 class="mb-3">Here are the resources for children 6-9 years old.</h2>
+          <p class="lead">Please look for the age group of the child(ren) in your home. Mark the “H” circle for each of the items you already have in your home for each specific age group for each of your children. For example, if you have a five year old, look at each of the items in the column for the age group, “3 years old - six years old.” Check the “H” circle for each of the items you currently HAVE in your home. If you are in NEED of that specific item please check the “N” circle. (Items needed for every age group are listed in the left- hand column.)</p>
+          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd9YM1q7BS5jT_QZmqWpGEUMRQoUonhAMUUGpFDff-9bs6zNw/viewform?embedded=true" width="640" height="382" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+          
+        {% elif selected_age in ['10', '11', '12'] %}
+        <h2 class="mb-3">Here are the resources for children 9-12 years old.</h2>
+          <p class="lead">Please look for the age group of the child(ren) in your home. Mark the “H” circle for each of the items you already have in your home for each specific age group for each of your children. For example, if you have a five year old, look at each of the items in the column for the age group, “3 years old - six years old.” Check the “H” circle for each of the items you currently HAVE in your home. If you are in NEED of that specific item please check the “N” circle. (Items needed for every age group are listed in the left- hand column.)</p>
+          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd9YM1q7BS5jT_QZmqWpGEUMRQoUonhAMUUGpFDff-9bs6zNw/viewform?embedded=true" width="640" height="382" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+          
+        {% elif selected_age in ['13', '14', '15'] %}
+        <h2 class="mb-3">Here are the resources for children 12-15 years old.</h2>
+          <p class="lead">Please look for the age group of the child(ren) in your home. Mark the “H” circle for each of the items you already have in your home for each specific age group for each of your children. For example, if you have a five year old, look at each of the items in the column for the age group, “3 years old - six years old.” Check the “H” circle for each of the items you currently HAVE in your home. If you are in NEED of that specific item please check the “N” circle. (Items needed for every age group are listed in the left- hand column.)</p>
+          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd9YM1q7BS5jT_QZmqWpGEUMRQoUonhAMUUGpFDff-9bs6zNw/viewform?embedded=true" width="640" height="382" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+          
+        {% elif selected_age in ['16', '17', '18'] %}
+        <h2 class="mb-3">Here are the resources for children 15-18 years old.</h2>
+          <p class="lead">Please look for the age group of the child(ren) in your home. Mark the “H” circle for each of the items you already have in your home for each specific age group for each of your children. For example, if you have a five year old, look at each of the items in the column for the age group, “3 years old - six years old.” Check the “H” circle for each of the items you currently HAVE in your home. If you are in NEED of that specific item please check the “N” circle. (Items needed for every age group are listed in the left- hand column.)</p>
+          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd9YM1q7BS5jT_QZmqWpGEUMRQoUonhAMUUGpFDff-9bs6zNw/viewform?embedded=true" width="640" height="382" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+          
+          {% elif selected_age in ['19'] %}
+        <h2 class="mb-3">Here are the resources for children all age groups. Please share with families at your school.</h2>
+          <p class="lead">Please look for the age group of the child(ren) in your home. Mark the “H” circle for each of the items you already have in your home for each specific age group for each of your children. For example, if you have a five year old, look at each of the items in the column for the age group, “3 years old - six years old.” Check the “H” circle for each of the items you currently HAVE in your home. If you are in NEED of that specific item please check the “N” circle. (Items needed for every age group are listed in the left- hand column.)</p>
+          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd9YM1q7BS5jT_QZmqWpGEUMRQoUonhAMUUGpFDff-9bs6zNw/viewform?embedded=true" width="640" height="382" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+          
+        {% else %}
+          <p class="lead">Please contact us at the phone number above.</p>
+        {% endif %}
+      </div>
+
+      <div class="navigate-button">
+        <label for="age-select" class="form-label">Wish to navigate to other age group?</label>
+        <select id="age-select" class="form-select">
+          <option value="under-1">Under 18 Months</option>
+          <option value="1">1 Year Old (Over 18 Months)</option>
+          <option value="2">2 Years Old</option>
+          <option value="3">3 Years Old</option>
+          <option value="4">4 Years Old</option>
+          <option value="5">5 Years Old</option>
+          <option value="6">6 Years Old</option>
+          <option value="7">7 Years Old</option>
+          <option value="8">8 Years Old</option>
+          <option value="9">9 Years Old</option>
+          <option value="10">10 Years Old</option>
+          <option value="11">11 Years Old</option>
+          <option value="12">12 Years Old</option>
+          <option value="13">13 Years Old</option>
+          <option value="14">14 Years Old</option>
+          <option value="15">15 Years Old</option>
+          <option value="16">16 Years Old</option>
+          <option value="17">17 Years Old</option>
+          <option value="18">18 Years Old</option>
+        </select>
+        <button class="btn btn-primary mt-3" onclick="navigateToAgeGroup()">Go</button>
+      </div>
+      
+      <script>
+        function navigateToAgeGroup() {
+          const ageGroup = document.getElementById('age-select').value;
+          window.location.href = `/content/resources/${ageGroup}`;
+        }
+      </script>
+
+</body>
+</html>
+
+{% endblock %}
