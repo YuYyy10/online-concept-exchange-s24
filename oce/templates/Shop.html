@@ -132,6 +132,15 @@
             { id: 31, name: "Citizenship Card", price: "$5", image: "{{ url_for('static', filename='images/humandominoeffectlogo.png') }}", description: "Card with information on citizenship" }
         ];
 
+        let cart = [];
+
+        function addToCart(product) {
+            cart.push(product);
+            console.log(cart); // Debug: Shows the cart items in the console
+            alert(`${product.name} has been added to your cart!`);
+}
+
+
         // Function to display products (only display price if admin desires it to be shown)
         function displayProducts() {
             const productContainer = document.getElementById("product-container");
@@ -146,6 +155,7 @@
                 <p>${product.description}</p>
                 <button>Add to Cart</button>
             `;
+            productCard.querySelector("button").addEventListener("click", () => addToCart(product));
 
             productContainer.appendChild(productCard);
             });
