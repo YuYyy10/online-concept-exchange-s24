@@ -1,61 +1,134 @@
-{% block content %}
 <link
-    rel="stylesheet"
-    href="{{ url_for('static', filename='css/Cart.css') }}"
-  />
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/Cart.css') }}"
+/>
 <section class="cart-section">
-    <div class="cart-intro">
-        <h2 class="cart-title">Review Your Order</h2>
-        <p class="cart-description">
-            Below are the items in your cart. Fill out your details to send your request, and we’ll contact you shortly!
-        </p>
+  <div class="cart-intro">
+    <h2 class="cart-title">Review Your Order</h2>
+    <p class="cart-description">
+      Below are the items in your cart. Fill out your details to send your request, and we’ll contact you shortly!
+    </p>
+  </div>
+
+  <!-- Cart Summary -->
+  <div class="cart-summary">
+    <div id="cart-items" class="cart-items">
+      <!-- JavaScript will populate items here -->
+    </div>
+    <div id="cart-total" class="cart-total">
+      <!-- JavaScript will populate total here -->
+    </div>
+  </div>
+
+    <div class="cart-actions">
+        <button id="clear-cart" class="clear-cart-button">Clear Cart</button>
+    </div>
+  <!-- Contact Form -->
+  <form
+    class="cart-form"
+    action="https://api.web3forms.com/submit"
+    method="POST"
+  >
+    <input
+      type="hidden"
+      name="access_key"
+      value="518a5a9e-038b-4915-9a41-9cb2cf1067f3"
+    />
+    <input
+      type="hidden"
+      name="subject"
+      value="New Cart Submission from My Website"
+    />
+    <input
+      type="hidden"
+      name="from_name"
+      value="My Website"
+    />
+
+    <!-- JavaScript will populate hidden inputs for cart items -->
+    <div id="hidden-cart-inputs"></div>
+
+    <div class="form-group">
+      <label for="name" class="form-label">Name</label>
+      <input
+        id="name"
+        name="name"
+        class="form-input"
+        placeholder="Your name"
+        type="text"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="email" class="form-label">Email</label>
+      <input
+        id="email"
+        name="email"
+        class="form-input"
+        placeholder="Your email"
+        type="email"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="phone" class="form-label">Phone</label>
+      <input
+        id="phone"
+        name="phone"
+        class="form-input"
+        placeholder="+1 (234) 56789"
+        type="text"
+      />
+    </div>
+    <div class="form-group">
+      <label for="message" class="form-label">Message</label>
+      <textarea
+        id="message"
+        name="message"
+        class="form-textarea"
+        placeholder="Additional details or questions"
+      ></textarea>
     </div>
 
-    <!-- Cart Summary -->
-    <div class="cart-summary">
-        <ul class="cart-items">
-            {% for item in cart_items %}
-            <li class="cart-item">
-                <span class="item-name">{{ item.name }}</span>
-                <span class="item-quantity">Quantity: {{ item.quantity }}</span>
-                <span class="item-price">Price: ${{ item.price }}</span>
-            </li>
-            {% endfor %}
-        </ul>
-        <div class="cart-total">
-            <strong>Total:</strong> ${{ cart_total }}
-        </div>
-    </div>
-
-    <!-- Contact Form -->
-    <form class="cart-form" action="https://api.web3forms.com/submit" method="POST">
-        <input type="hidden" name="access_key" value="518a5a9e-038b-4915-9a41-9cb2cf1067f3" />
-        <input type="hidden" name="subject" value="New Cart Submission from My Website" />
-        <input type="hidden" name="from_name" value="My Website" />
-        
-        <!-- Include Cart Items as Hidden Inputs -->
-        {% for item in cart_items %}
-        <input type="hidden" name="cart_items[]" value="{{ item.name }} (x{{ item.quantity }}): ${{ item.price }}" />
-        {% endfor %}
-
-        <div class="form-group">
-            <label for="name" class="form-label">Name</label>
-            <input id="name" name="name" class="form-input" placeholder="Your name" type="text" required />
-        </div>
-        <div class="form-group">
-            <label for="email" class="form-label">Email</label>
-            <input id="email" name="email" class="form-input" placeholder="Your email" type="email" required />
-        </div>
-        <div class="form-group">
-            <label for="phone" class="form-label">Phone</label>
-            <input id="phone" name="phone" class="form-input" placeholder="+1 (234) 56789" type="text" />
-        </div>
-        <div class="form-group">
-            <label for="message" class="form-label">Message</label>
-            <textarea id="message" name="message" class="form-textarea" placeholder="Additional details or questions"></textarea>
-        </div>
-
-        <button class="form-submit" type="submit">Send Request</button>
-    </form>
+    <button class="form-submit" type="submit">Send Request</button>
+  </form>
+  <script src="{{ url_for('static', filename='js/Cart.js') }}"></script>
 </section>
-{% endblock %}
+
+<script>
+  function loadCart() {
+    const cartItemsContainer = document.getElementById("cart-items");
+    const cartTotalContainer = document.getElementById("cart-total");
+    const hiddenCartInputs = document.getElementById("hidden-cart-inputs");
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || []; // Retrieve cart from localStorage
+
+    // Clear previous cart data
+    cartItemsContainer.innerHTML = "";
+    hiddenCartInputs.innerHTML = "";
+    let total = 0;
+
+    // Render cart items and total
+    cart.forEach((item, index) => {
+      const itemDiv = document.createElement("div");
+      itemDiv.innerHTML = `<p>${item.name} - ${item.price}</p>`;
+      cartItemsContainer.appendChild(itemDiv);
+
+      // Add to total price
+      total += parseFloat(item.price.replace("$", ""));
+
+      // Add hidden input for each item to form
+      const hiddenInput = document.createElement("input");
+      hiddenInput.type = "hidden";
+      hiddenInput.name = `cart_items[${index}]`;
+      hiddenInput.value = `${item.name} (x${item.quantity}): ${item.price}`;
+      hiddenCartInputs.appendChild(hiddenInput);
+    });
+
+    // Update cart total
+    cartTotalContainer.textContent = `Total: $${total.toFixed(2)}`;
+  }
+
+  // Load cart on page load
+  document.addEventListener("DOMContentLoaded", loadCart);
+</script>
