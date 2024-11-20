@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/index.css') }}"
+/>
+<!-- 
+  The home page is defined as a Bootstrap grid
+  (https://getbootstrap.com/docs/5.3/layout/grid/)
+
+  This link can explain many of the Bootstrap CSS
+  classes on each element, such as row and col-*
+-->
+
+<head>
+  <title>Calendar</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      padding-top: 100px;
+      scroll-behavior: smooth;
+    }
+    .section {
+      padding: 50px 0;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+    <div class="container mt-5">
+      <h1 class="mb-4">Calendar</h1>
+  
+      <h2 class="mb-3">Welcome __ Community</h2>
+  
+      <!-- Paragraph under subtitle -->
+      <p class="lead">
+        Please use this calendar to stay up to date with our meetings!
+      </p>
+      <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FNew_York&showPrint=0&src=Y2JjMjgyMmQ4NTA4MjEzYWZmNzU4NTFjN2FiNDE1Y2VjNTRkZWMzMzdkM2Q2NjQ1YTEwM2RmNmIzYzY0YjJiNEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%234285F4" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+    </div>
+</body>
+</html>
+
+{% endblock %}

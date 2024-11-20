@@ -65,6 +65,10 @@ def resources(selected_age):
 def login():
   return render_template('LoginPage.html')
 
+@content.route('/content/calendar/')
+def calendar():
+  return render_template('calendar.html')
+
 @content.route('/content/Contact/')
 def contact():
   return render_template('ContactPage.html')
