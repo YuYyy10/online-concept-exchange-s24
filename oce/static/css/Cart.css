@@ -77,6 +77,19 @@ h2 {
     text-align: right;
 }
 
+.clear-cart-button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+/* .clear-cart-button:hover {
+    background-color: #ff3333;
+} */
 /* Form Styles */
 .cart-form {
     margin-top: 20px;
