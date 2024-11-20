@@ -68,6 +68,7 @@
       const ageDropdown = document.getElementById("age-dropdown");
 
       const popupShown = sessionStorage.getItem("popupShown");
+      const selectedAge = sessionStorage.getItem('selected_age');
 
 
       if (!popupShown && popup) {
@@ -80,11 +81,23 @@
       }
 
       window.closePopup = function () {
+        /*
         popup.style.display = "none"; // Hide the pop-up
         console.log("Pop-up closed");
         popup.classList.add("hidden");
         console.log(`Proceeding with age: 19`);
         window.location.href = `content/`; // Example URL structure
+        */
+       
+        const popup = document.getElementById("age-popup"); // Ensure popup is defined here
+        if (popup) {
+          popup.style.display = "none"; // Hide the pop-up
+          popup.classList.add("hidden");
+          console.log("Pop-up closed");
+        } else {
+          console.error("Pop-up element not found when closing!");
+        }
+        
       };
 
       window.proceed = function () {
@@ -98,7 +111,7 @@
           // Redirect based on the selected age
           window.location.href = `content/resources/${selectedAge}`; // Example URL structure
         } else {
-          alert("Please select an age.");
+          //alert("Please select an age.");
           selectedAge = 'under-1';
         }
       };
@@ -112,21 +125,26 @@
           let redirectUrl = '/resources/' + selectedAge;
           window.location.href = redirectUrl;
           } else {
-            alert("Please select an age first.");
+            //alert("Please select an age first.");
           }
 
       }
 
       if (closeButton) {
+        console.log("Close button found!");
         closeButton.addEventListener("click", window.closePopup);
+      } else {
+        console.error("Close button not found!");
       }
 
       if (cancelButton) {
         cancelButton.addEventListener("click", window.closePopup);
+      } else {
+        console.error("Cancel button not found!");
       }
 
       // Check if age is already saved in sessionStorage when the page loads
-    const selectedAge = sessionStorage.getItem('selected_age');
+    //const selectedAge = sessionStorage.getItem('selected_age');
     if (selectedAge) {
       console.log("Selected age from sessionStorage:", selectedAge);
       // If age is already stored, redirect to the corresponding resource page
