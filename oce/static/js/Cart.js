@@ -7,6 +7,6 @@ function addToCart(product) {
 }
 document.getElementById("clear-cart").addEventListener("click", () => {
     localStorage.removeItem("cart"); // Clear the cart from localStorage
-    alert("Cart has been cleared.");
+    // alert("Cart has been cleared.");
     loadCart(); // Refresh the cart display
 });

@@ -6,7 +6,7 @@
 
 /* General Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Varela", sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f9f9f9;
@@ -14,14 +14,16 @@ body {
 }
 
 h2 {
+    margin-top: 20px;
     color: #444;
 }
 
 /* Cart Section */
 .cart-section {
     max-width: 800px;
-    margin: 20px auto;
+    margin: 120px auto;
     padding: 20px;
+    gap: 20px;
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -87,9 +89,6 @@ h2 {
     margin-top: 15px;
 }
 
-/* .clear-cart-button:hover {
-    background-color: #ff3333;
-} */
 /* Form Styles */
 .cart-form {
     margin-top: 20px;
