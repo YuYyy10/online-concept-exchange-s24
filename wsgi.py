@@ -1,5 +1,5 @@
 from oce import create_app
-from frozen_flask import Freezer
+from flask_frozen import Freezer
 from flask import render_template
 
 app = create_app()
