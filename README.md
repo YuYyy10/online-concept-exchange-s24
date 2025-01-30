@@ -13,3 +13,5 @@ Once created, you can sync up with the full development environment by running `
 
 During development, the site can be run using `flask run` from the terminal. You can also run the command as `flask run --debug` to enable hot reloading and the in-browser debugger.
 This command must be run from the toplevel directory of the code structure (the same folder as `wsgi.py`). The site will be launched on your computer's [localhost](http://localhost:5000/) on port 5000. Use `Ctrl+C` to stop the server.
+
+##Public Site Link
