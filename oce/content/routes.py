@@ -1,9 +1,38 @@
-from flask import Blueprint
-from flask import render_template, send_file, request, jsonify
+from flask import Blueprint, render_template, send_file, request, jsonify, redirect, url_for, flash, session
 from oce.utils.db_interface import create_post, get_post_by_uuid
 from oce.utils.models import User
+from flask_dance.contrib.github import github, make_github_blueprint
+from flask_dance.consumer.storage.session import BaseStorage
+from dotenv import load_dotenv
+load_dotenv()
+import os
+
+class SessionStorage(BaseStorage):
+    def __init__(self, session_key="flask_dance_token"):
+        super().__init__()
+        self.session_key = session_key
+
+    def get(self, blueprint):
+        return session.get(self.session_key)
+
+    def set(self, blueprint, token):
+        session[self.session_key] = token
+
+    def delete(self, blueprint):
+        session.pop(self.session_key, None)
 
 content = Blueprint('content', __name__)
+
+ADMINS = os.getenv('ADMINS', '').split(',')
+
+github_blueprint = make_github_blueprint(
+    client_id=os.getenv('GITHUB_OAUTH_CLIENT_ID'),
+    client_secret=os.getenv('GITHUB_OAUTH_CLIENT_SECRET'),
+    scope='user',
+    redirect_to='content.github_callback',
+    storage=SessionStorage()
+)
+content.register_blueprint(github_blueprint, url_prefix='/github_login')
 
 @content.route('/content/block1')
 def block1():
@@ -97,3 +126,60 @@ def create_post_route():
     except Exception as e:
         print(f"Error: {e}")
         return jsonify({'success': False, 'error': str(e)}), 500
+
+@content.route('/github_login')
+def github_login():
+    if not github.authorized:
+        print("Client ID:", os.getenv('GITHUB_OAUTH_CLIENT_ID'))
+        print("Client Secret:", os.getenv('GITHUB_OAUTH_CLIENT_SECRET'))
+        auth_url, _ = github.authorization_url("https://github.com/login/oauth/authorize")
+        print("Redirecting to GitHub:",auth_url)
+        return redirect(auth_url)
+    #content.github_login
+    else:
+       account_info = github.get('/user')
+       if account_info.ok:
+          account_info_json = account_info.json()
+          return f'<h1>Your GitHub name is {account_info_json["login"]}</h1>'
+    return'<h1>Request failed!<h1>'
+
+@content.route('/github_callback')
+def github_callback():
+    print("Callback triggered!")  # Debug print
+    if not github.authorized:
+       print("Failed")
+       flash("Authorizatiion failed.", "error")
+       return redirect(url_for('content.login'))
+    
+    account_info = github.get('/user')
+    if account_info.ok:
+       account_info_json = account_info.json()
+       username = account_info_json['login']
+       print(f"Logged in as {username}") 
+
+       session['user'] = username
+       flash(f"Logged in as {username}" , "success")
+
+       if username in ADMINS:
+          return redirect(url_for('content.admin_dashboard'))
+       
+       return redirect(url_for('content.index'))
+    flash("Failed to fetch user info.", "error")
+    return redirect(url_for('content.index'))
+
+@content.route('/admin')
+def admin_dashboard():
+    if 'user' not in session or session['user'] not in ADMINS:
+       return "Unauthorized", 403
+    return render_template('admin_dashboard.html')
+
+@content.route('/logout')
+def logout():
+    session.pop('user', None)
+    github.logout()
+    flash("You have been logged out.", "success")
+    return redirect(url_for('content.index'))
+
+@content.route('/')
+def index():
+    return render_template('index.html')
